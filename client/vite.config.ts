@@ -6,6 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    watch: {
+      ignored: ['**/Layout 4.png', '**/*.HEIC', '**/*.JPG.bak'],
+    },
     proxy: {
       '/api': {
         target: 'http://localhost:5000',

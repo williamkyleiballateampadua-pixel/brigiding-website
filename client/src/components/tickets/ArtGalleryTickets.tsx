@@ -176,7 +176,8 @@ export const ArtGalleryTickets: React.FC = () => {
           width: 100%;
           height: 320px;
           background-size: cover;
-          background-position: center;
+          background-position: center top;
+          image-rendering: -webkit-optimize-contrast;
           border-radius: 4px;
         }
 

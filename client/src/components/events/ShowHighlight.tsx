@@ -65,7 +65,8 @@ export const ShowHighlight: React.FC = () => {
           width: 100%;
           height: 100%;
           background-size: cover;
-          background-position: center;
+          background-position: center 20%;
+          image-rendering: -webkit-optimize-contrast;
           border-radius: 8px;
         }
 

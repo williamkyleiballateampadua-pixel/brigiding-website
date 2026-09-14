@@ -115,7 +115,7 @@ export const ArtGallery: React.FC = () => {
 
         .art-photo-card {
           position: relative;
-          height: 420px;
+          height: 440px;
           border-radius: 8px;
           overflow: hidden;
           cursor: pointer;
@@ -127,7 +127,8 @@ export const ArtGallery: React.FC = () => {
           width: 100%;
           height: 100%;
           background-size: cover;
-          background-position: center;
+          background-position: center top;
+          image-rendering: -webkit-optimize-contrast;
           transition: transform 0.4s ease;
         }
 

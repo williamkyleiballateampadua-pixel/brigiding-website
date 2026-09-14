@@ -129,7 +129,8 @@ export const EventsSection: React.FC = () => {
           width: 100%;
           height: 240px;
           background-size: cover;
-          background-position: center;
+          background-position: center top;
+          image-rendering: -webkit-optimize-contrast;
         }
 
         .event-card-body {

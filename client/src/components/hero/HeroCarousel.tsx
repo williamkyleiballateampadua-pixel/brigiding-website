@@ -35,7 +35,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       description: 'Reigning supreme on global stages, bringing authentic Filipina excellence and runway dominance to sold-out arenas worldwide.',
       ctaText: 'EXPLORE SHOWS →',
       targetTab: 'TICKETS',
-      imageUrl: '/Pictures/BRIGIDING-252.jpg',
+      imageUrl: '/Pictures/BRIGIDING-252-web.jpg',
     },
     {
       id: 3,
@@ -71,6 +71,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Preload all slide images into browser cache immediately
+  useEffect(() => {
+    slides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.imageUrl;
+    });
+  }, []);
+
   // Auto-play slide transition every 5 seconds
   useEffect(() => {
     const timer = setInterval(() => {
@@ -79,8 +87,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
     return () => clearInterval(timer);
   }, [slides.length]);
-
-  const currentSlide = slides[currentIndex];
 
   const handleCtaClick = (e: React.MouseEvent, targetTab: string) => {
     e.preventDefault();
@@ -95,54 +101,77 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
   return (
     <section className="hero-section">
       <div className="hero-inner">
-        {/* Hero Left Content Column */}
-        <div className="hero-left">
-          <div className="section-overline">
-            {currentSlide.overline}
-          </div>
+        {/* Stacked Slides Container for 60fps GPU Cross-Fade */}
+        <div className="slides-container">
+          {slides.map((slide, index) => {
+            const isActive = index === currentIndex;
+            return (
+              <div
+                key={slide.id}
+                className={`hero-slide ${isActive ? 'active' : ''}`}
+                style={{
+                  opacity: isActive ? 1 : 0,
+                  pointerEvents: isActive ? 'auto' : 'none',
+                  zIndex: isActive ? 2 : 1,
+                }}
+              >
+                {/* Hero Left Content Column */}
+                <div className="hero-left">
+                  <div className="section-overline">{slide.overline}</div>
 
-          <div className="hero-title-group">
-            <h1 className="hero-title">{currentSlide.title}</h1>
-            <p className="hero-tagline">{currentSlide.tagline}</p>
-          </div>
+                  <div className="hero-title-group">
+                    <h1 className="hero-title">{slide.title}</h1>
+                    <p className="hero-tagline">{slide.tagline}</p>
+                  </div>
 
-          <p className="hero-description">{currentSlide.description}</p>
+                  <p className="hero-description">{slide.description}</p>
 
-          <div className="hero-cta">
-            <button
-              onClick={(e) => handleCtaClick(e, currentSlide.targetTab)}
-              className="button-gold"
-            >
-              {currentSlide.ctaText}
-            </button>
-          </div>
+                  <div className="hero-cta">
+                    <button
+                      onClick={(e) => handleCtaClick(e, slide.targetTab)}
+                      className="button-gold"
+                    >
+                      {slide.ctaText}
+                    </button>
+                  </div>
+                </div>
 
-          {/* 5 Star Indicators (Silver turned Gold for active slide) */}
-          <div className="star-indicators">
-            {slides.map((slide, index) => {
-              const isActive = index === currentIndex;
-              return (
-                <button
-                  key={slide.id}
-                  className={`star-btn ${isActive ? 'active' : ''}`}
-                  onClick={() => setCurrentIndex(index)}
-                  title={`Go to slide ${slide.id}: ${slide.overline}`}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill={isActive ? '#C9A84C' : 'none'} stroke={isActive ? '#C9A84C' : '#9CA3AF'} strokeWidth="2">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                </button>
-              );
-            })}
-          </div>
+                {/* Hero Right Photograph Column */}
+                <div className="hero-right">
+                  <div
+                    className="hero-photograph"
+                    style={{ backgroundImage: `url("${slide.imageUrl}")` }}
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
 
-        {/* Hero Right Photograph Column */}
-        <div className="hero-right">
-          <div
-            className="hero-photograph"
-            style={{ backgroundImage: `url("${currentSlide.imageUrl}")` }}
-          />
+        {/* 5 Star Indicators (Silver turned Gold for active slide) */}
+        <div className="star-indicators">
+          {slides.map((slide, index) => {
+            const isActive = index === currentIndex;
+            return (
+              <button
+                key={slide.id}
+                className={`star-btn ${isActive ? 'active' : ''}`}
+                onClick={() => setCurrentIndex(index)}
+                title={`Go to slide ${slide.id}: ${slide.overline}`}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill={isActive ? '#C9A84C' : 'none'}
+                  stroke={isActive ? '#C9A84C' : '#9CA3AF'}
+                  strokeWidth="2"
+                >
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -155,14 +184,31 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           justify-content: center;
           align-items: center;
           overflow: hidden;
+          position: relative;
         }
 
         .hero-inner {
           width: 100%;
           max-width: 1440px;
           height: 720px;
+          position: relative;
+        }
+
+        .slides-container {
+          width: 100%;
+          height: 100%;
+          position: relative;
+        }
+
+        .hero-slide {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 720px;
           display: flex;
           flex-direction: row;
+          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: opacity;
         }
 
         .hero-left {
@@ -212,10 +258,13 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .star-indicators {
+          position: absolute;
+          left: 80px;
+          bottom: 48px;
+          z-index: 10;
           display: flex;
           align-items: center;
           gap: 12px;
-          margin-top: 16px;
         }
 
         .star-btn {
@@ -245,24 +294,27 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
-          transition: background-image 0.6s ease-in-out;
         }
 
         @media (max-width: 1024px) {
-          .hero-section {
+          .hero-section, .hero-inner, .hero-slide {
             height: auto;
+            min-height: 800px;
           }
-          .hero-inner {
+          .hero-slide {
             flex-direction: column;
-            height: auto;
           }
           .hero-left, .hero-right {
             width: 100%;
-            height: 500px;
+            height: 400px;
             padding: 48px 32px;
           }
           .hero-title {
             font-size: 56px;
+          }
+          .star-indicators {
+            left: 32px;
+            bottom: 24px;
           }
         }
       `}</style>
@@ -271,3 +323,4 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 };
 
 export default HeroCarousel;
+

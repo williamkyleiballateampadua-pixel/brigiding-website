@@ -126,13 +126,42 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
                   <p className="hero-description">{slide.description}</p>
 
-                  <div className="hero-cta">
+                  <div className="hero-cta-group">
                     <button
                       onClick={(e) => handleCtaClick(e, slide.targetTab)}
                       className="button-gold"
                     >
                       {slide.ctaText}
                     </button>
+
+                    {/* 5 Star Indicators placed directly inside left column stack */}
+                    <div className="star-indicators">
+                      {slides.map((starSlide, starIndex) => {
+                        const isStarActive = starIndex === currentIndex;
+                        return (
+                          <button
+                            key={starSlide.id}
+                            className={`star-btn ${isStarActive ? 'active' : ''}`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setCurrentIndex(starIndex);
+                            }}
+                            title={`Go to slide ${starSlide.id}: ${starSlide.overline}`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 24 24"
+                              fill={isStarActive ? '#C9A84C' : 'none'}
+                              stroke={isStarActive ? '#C9A84C' : '#9CA3AF'}
+                              strokeWidth="2"
+                            >
+                              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                            </svg>
+                          </button>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
 
@@ -147,38 +176,12 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             );
           })}
         </div>
-
-        {/* 5 Star Indicators (Silver turned Gold for active slide) */}
-        <div className="star-indicators">
-          {slides.map((slide, index) => {
-            const isActive = index === currentIndex;
-            return (
-              <button
-                key={slide.id}
-                className={`star-btn ${isActive ? 'active' : ''}`}
-                onClick={() => setCurrentIndex(index)}
-                title={`Go to slide ${slide.id}: ${slide.overline}`}
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill={isActive ? '#C9A84C' : 'none'}
-                  stroke={isActive ? '#C9A84C' : '#9CA3AF'}
-                  strokeWidth="2"
-                >
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </button>
-            );
-          })}
-        </div>
       </div>
 
       <style>{`
         .hero-section {
           width: 100%;
-          height: 720px;
+          min-height: clamp(560px, 75vh, 720px);
           background: #0A0D1A;
           display: flex;
           justify-content: center;
@@ -190,7 +193,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-inner {
           width: 100%;
           max-width: 1440px;
-          height: 720px;
+          min-height: clamp(560px, 75vh, 720px);
           position: relative;
         }
 
@@ -204,7 +207,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           inset: 0;
           width: 100%;
-          height: 720px;
+          min-height: clamp(560px, 75vh, 720px);
           display: flex;
           flex-direction: row;
           transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -213,13 +216,13 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         .hero-left {
           width: 50%;
-          height: 720px;
-          padding: 0 48px 0 80px;
+          min-height: clamp(560px, 75vh, 720px);
+          padding: 40px clamp(24px, 5vw, 80px);
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: flex-start;
-          gap: 24px;
+          gap: clamp(16px, 2.2vw, 28px);
         }
 
         .hero-title-group {
@@ -231,7 +234,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-title {
           font-family: var(--font-serif);
           font-weight: 400;
-          font-size: 80px;
+          font-size: clamp(44px, 5.5vw, 80px);
           line-height: 95%;
           color: #FFFFFF;
         }
@@ -239,7 +242,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-tagline {
           font-family: var(--font-serif);
           font-weight: 400;
-          font-size: 32px;
+          font-size: clamp(20px, 2.2vw, 32px);
           line-height: 120%;
           color: #C9A84C;
         }
@@ -247,21 +250,21 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-description {
           font-family: var(--font-sans);
           font-weight: 400;
-          font-size: 16px;
+          font-size: clamp(14px, 1.1vw, 16px);
           line-height: 160%;
           color: #EFEAE0;
           max-width: 540px;
         }
 
-        .hero-cta {
+        .hero-cta-group {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 20px;
           margin-top: 8px;
         }
 
         .star-indicators {
-          position: absolute;
-          left: 80px;
-          bottom: 48px;
-          z-index: 10;
           display: flex;
           align-items: center;
           gap: 12px;
@@ -285,7 +288,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         .hero-right {
           width: 50%;
-          height: 720px;
+          min-height: clamp(560px, 75vh, 720px);
         }
 
         .hero-photograph {
@@ -298,23 +301,35 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         @media (max-width: 1024px) {
           .hero-section, .hero-inner, .hero-slide {
-            height: auto;
-            min-height: 800px;
+            min-height: auto;
           }
           .hero-slide {
+            position: relative;
             flex-direction: column;
           }
-          .hero-left, .hero-right {
+          .hero-left {
             width: 100%;
-            height: 400px;
-            padding: 48px 32px;
+            min-height: auto;
+            padding: 48px 32px 32px 32px;
           }
-          .hero-title {
-            font-size: 56px;
+          .hero-right {
+            width: 100%;
+            height: 420px;
+            min-height: 420px;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .hero-left {
+            padding: 32px 20px 24px 20px;
+            gap: 16px;
+          }
+          .hero-right {
+            height: 320px;
+            min-height: 320px;
           }
           .star-indicators {
-            left: 32px;
-            bottom: 24px;
+            gap: 8px;
           }
         }
       `}</style>
@@ -323,4 +338,5 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 };
 
 export default HeroCarousel;
+
 

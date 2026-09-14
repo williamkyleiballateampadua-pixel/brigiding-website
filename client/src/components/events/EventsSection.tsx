@@ -8,7 +8,11 @@ interface EventCardData {
   imageUrl: string;
 }
 
-export const EventsSection: React.FC = () => {
+interface EventsSectionProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const EventsSection: React.FC<EventsSectionProps> = ({ onNavigate }) => {
   const eventsList: EventCardData[] = [
     {
       id: '1',
@@ -33,6 +37,13 @@ export const EventsSection: React.FC = () => {
     },
   ];
 
+  const handleTicketClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('TICKETS');
+    }
+  };
+
   return (
     <section className="events-section" id="tickets">
       <div className="events-inner">
@@ -55,9 +66,9 @@ export const EventsSection: React.FC = () => {
                 <h3 className="event-card-title">{evt.title}</h3>
                 <p className="event-card-location">{evt.location}</p>
                 <div className="event-card-action">
-                  <a href="#community" className="button-navy" style={{ width: '100%', textAlign: 'center' }}>
+                  <button onClick={handleTicketClick} className="button-navy" style={{ width: '100%', textAlign: 'center' }}>
                     GET TICKETS →
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

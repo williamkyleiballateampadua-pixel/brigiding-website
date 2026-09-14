@@ -1,6 +1,17 @@
 import React from 'react';
 
-export const ShowHighlight: React.FC = () => {
+interface ShowHighlightProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const ShowHighlight: React.FC<ShowHighlightProps> = ({ onNavigate }) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('TICKETS');
+    }
+  };
+
   return (
     <section className="show-highlight-section">
       <div className="show-highlight-inner">
@@ -30,8 +41,11 @@ export const ShowHighlight: React.FC = () => {
             Brigiding returns to South America for the absolute peak of runway fantasy, high-fashion meets, and theatrical main-stage showcases representing drag excellence from the Philippines.
           </p>
 
-          <div className="banner-partners">
-            PARTNERS: DRAGCON BR · ALLSTARS INC
+          <div className="banner-actions">
+            <button onClick={handleClick} className="button-gold">
+              RESERVE HIGHLIGHT TICKETS →
+            </button>
+            <span className="banner-partners">PARTNERS: DRAGCON BR · ALLSTARS INC</span>
           </div>
         </div>
       </div>
@@ -102,6 +116,13 @@ export const ShowHighlight: React.FC = () => {
           max-width: 760px;
         }
 
+        .banner-actions {
+          display: flex;
+          align-items: center;
+          gap: 24px;
+          margin-top: 8px;
+        }
+
         .banner-partners {
           font-family: var(--font-sans);
           font-weight: 700;
@@ -109,7 +130,6 @@ export const ShowHighlight: React.FC = () => {
           line-height: 16px;
           text-transform: uppercase;
           color: #FFFFFF;
-          margin-top: 8px;
         }
 
         @media (max-width: 1024px) {
@@ -120,6 +140,10 @@ export const ShowHighlight: React.FC = () => {
           .banner-image-wrapper {
             width: 100%;
             height: 300px;
+          }
+          .banner-actions {
+            flex-direction: column;
+            align-items: flex-start;
           }
         }
       `}</style>

@@ -7,10 +7,15 @@ interface SlideData {
   tagline: string;
   description: string;
   ctaText: string;
+  targetTab: string;
   imageUrl: string;
 }
 
-export const HeroCarousel: React.FC = () => {
+interface HeroCarouselProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
   const slides: SlideData[] = [
     {
       id: 1,
@@ -19,6 +24,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Glamour without borders.',
       description: 'Experience Filipino artistry, fearless high-fashion performance, and unforgettable stage energy combined in a global drag dynasty.',
       ctaText: 'GET IN TOUCH →',
+      targetTab: 'COMMUNITY',
       imageUrl: '/Pictures/1%20-%20Promo%20Look.jpg',
     },
     {
@@ -28,6 +34,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'International Drag Royalty.',
       description: 'Reigning supreme on global stages, bringing authentic Filipina excellence and runway dominance to sold-out arenas worldwide.',
       ctaText: 'EXPLORE SHOWS →',
+      targetTab: 'TICKETS',
       imageUrl: '/Pictures/BRIGIDING-252.jpg',
     },
     {
@@ -37,6 +44,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Nurturing legendary talent.',
       description: 'Founding mother of Manila’s premier drag dynasty, cultivating high-octane choreography and boundary-pushing performance art.',
       ctaText: 'MEET THE HOUSE →',
+      targetTab: 'ARTIST',
       imageUrl: '/Pictures/5%20-%20Terno%20Look.jpg',
     },
     {
@@ -46,6 +54,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Mastermind of stage & spectacle.',
       description: 'Directing and producing sold-out theatrical galas, Drag PH premiere nights, and cross-border performance showcases.',
       ctaText: 'VIEW PRODUCTIONS →',
+      targetTab: 'TICKETS',
       imageUrl: '/Pictures/14%20-%20Ruveal.jpg',
     },
     {
@@ -55,6 +64,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Unfiltered tea behind the lashes.',
       description: 'Host of the acclaimed podcast unpacking the art, business, grit, and chaos of international drag stardom.',
       ctaText: 'LISTEN NOW →',
+      targetTab: 'COMMUNITY',
       imageUrl: '/Pictures/11%20-%20Pearl%20Look.jpg',
     },
   ];
@@ -71,6 +81,16 @@ export const HeroCarousel: React.FC = () => {
   }, [slides.length]);
 
   const currentSlide = slides[currentIndex];
+
+  const handleCtaClick = (e: React.MouseEvent, targetTab: string) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(targetTab);
+    } else {
+      const el = document.getElementById(targetTab.toLowerCase());
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="hero-section">
@@ -89,9 +109,12 @@ export const HeroCarousel: React.FC = () => {
           <p className="hero-description">{currentSlide.description}</p>
 
           <div className="hero-cta">
-            <a href="#community" className="button-gold">
+            <button
+              onClick={(e) => handleCtaClick(e, currentSlide.targetTab)}
+              className="button-gold"
+            >
               {currentSlide.ctaText}
-            </a>
+            </button>
           </div>
 
           {/* 5 Star Indicators (Silver turned Gold for active slide) */}

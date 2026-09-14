@@ -1,13 +1,27 @@
 import React from 'react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const navItems = ['HOME', 'TICKETS', 'ARTIST', 'COMMUNITY'];
+
+  const handleNavClick = (tab: string) => {
+    if (onNavigate) {
+      onNavigate(tab);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="footer-container">
       <div className="footer-inner">
         {/* Upper Row */}
         <div className="footer-upper">
           {/* Logo & Brand */}
-          <div className="footer-brand">
+          <div className="footer-brand" onClick={() => handleNavClick('HOME')} style={{ cursor: 'pointer' }}>
             <svg className="footer-logo" viewBox="0 0 64 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 28L6 10L20 18L32 6L44 18L58 10L52 28H12Z" fill="#C9A84C" />
               <circle cx="6" cy="9" r="2.5" fill="#C9A84C" />
@@ -18,9 +32,13 @@ export const Footer: React.FC = () => {
             <span className="footer-title">BRIGIDING</span>
           </div>
 
-          {/* Motto */}
-          <div className="footer-motto">
-            Art · Community · Empowerment
+          {/* Quick Nav Links */}
+          <div className="footer-nav-links">
+            {navItems.map((item) => (
+              <span key={item} className="footer-nav-item" onClick={() => handleNavClick(item)}>
+                {item}
+              </span>
+            ))}
           </div>
 
           {/* Social Icons (3 ONLY: IG, FB, YT) */}
@@ -33,13 +51,13 @@ export const Footer: React.FC = () => {
               </svg>
             </a>
 
-            <a href="https://facebook.com/brigidingofficial" target="_blank" rel="noopener noreferrer" className="social-icon-btn" title="Facebook">
+            <a href="https://www.facebook.com/brigiding" target="_blank" rel="noopener noreferrer" className="social-icon-btn" title="Facebook">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
             </a>
 
-            <a href="https://youtube.com/@brigiding" target="_blank" rel="noopener noreferrer" className="social-icon-btn" title="YouTube">
+            <a href="https://www.youtube.com/@Brigidingofficial" target="_blank" rel="noopener noreferrer" className="social-icon-btn" title="YouTube">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
@@ -54,7 +72,7 @@ export const Footer: React.FC = () => {
         {/* Lower Row */}
         <div className="footer-lower">
           <div className="footer-copyright">
-            © 2026 Brigiding. All rights reserved.
+            © 2026 Brigiding. All rights reserved. · Art · Community · Empowerment
           </div>
           <div className="decorative-accent">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="2">
@@ -68,7 +86,8 @@ export const Footer: React.FC = () => {
       <style>{`
         .footer-container {
           width: 100%;
-          background: #11162E;
+          background: #0A0D1A;
+          border-top: 1px solid rgba(201, 168, 76, 0.2);
           padding: 80px 0 40px;
           display: flex;
           justify-content: center;
@@ -109,12 +128,24 @@ export const Footer: React.FC = () => {
           color: #C9A84C;
         }
 
-        .footer-motto {
-          font-family: var(--font-serif);
-          font-weight: 400;
-          font-size: 18px;
-          line-height: 25px;
-          color: #FFFFFF;
+        .footer-nav-links {
+          display: flex;
+          align-items: center;
+          gap: 32px;
+        }
+
+        .footer-nav-item {
+          font-family: var(--font-sans);
+          font-size: 13px;
+          font-weight: 500;
+          color: #D1D5DB;
+          text-transform: uppercase;
+          cursor: pointer;
+          transition: color 0.2s ease;
+        }
+
+        .footer-nav-item:hover {
+          color: #C9A84C;
         }
 
         .footer-socials {

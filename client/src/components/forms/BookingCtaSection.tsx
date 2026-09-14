@@ -1,6 +1,24 @@
 import React from 'react';
 
-export const BookingCtaSection: React.FC = () => {
+interface BookingCtaSectionProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const BookingCtaSection: React.FC<BookingCtaSectionProps> = ({ onNavigate }) => {
+  const handleBookingClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('COMMUNITY');
+    }
+  };
+
+  const handleTicketsClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('TICKETS');
+    }
+  };
+
   return (
     <section className="booking-cta-section">
       <div className="booking-cta-inner">
@@ -13,12 +31,12 @@ export const BookingCtaSection: React.FC = () => {
         </p>
 
         <div className="cta-button-group">
-          <a href="#community" className="button-gold">
+          <button onClick={handleBookingClick} className="button-gold">
             BOOKING ENQUIRIES
-          </a>
-          <a href="#tickets" className="button-navy">
+          </button>
+          <button onClick={handleTicketsClick} className="button-navy">
             BUY TICKETS →
-          </a>
+          </button>
         </div>
       </div>
 

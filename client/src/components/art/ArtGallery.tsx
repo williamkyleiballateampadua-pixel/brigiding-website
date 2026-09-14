@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ArtPhoto {
   id: number;
@@ -8,6 +8,8 @@ interface ArtPhoto {
 }
 
 export const ArtGallery: React.FC = () => {
+  const [selectedPhoto, setSelectedPhoto] = useState<ArtPhoto | null>(null);
+
   // 12 Authentic High-Fashion Drag Photography Assets (3 columns x 4 rows)
   const photos: ArtPhoto[] = [
     { id: 1, title: 'Promo Official Look', url: '/Pictures/1%20-%20Promo%20Look.jpg', category: 'Lookbook' },
@@ -34,7 +36,7 @@ export const ArtGallery: React.FC = () => {
           <div className="gallery-header-row">
             <h2 className="gallery-title">An editorial life in full color</h2>
             <p className="gallery-subtitle">
-              A curated lookbook documenting dramatic fashion, stage dominance, and structural garments inspired by Filipina culture and global runways.
+              A curated lookbook documenting dramatic fashion, stage dominance, and structural garments inspired by Filipina culture and global runways. Click any photo to preview full screen.
             </p>
           </div>
         </div>
@@ -42,7 +44,7 @@ export const ArtGallery: React.FC = () => {
         {/* 12 Pictures in 3 Columns x 4 Rows */}
         <div className="art-grid-12">
           {photos.map((photo) => (
-            <div key={photo.id} className="art-photo-card">
+            <div key={photo.id} className="art-photo-card" onClick={() => setSelectedPhoto(photo)}>
               <div
                 className="art-photo-img"
                 style={{ backgroundImage: `url("${photo.url}")` }}
@@ -50,11 +52,30 @@ export const ArtGallery: React.FC = () => {
               <div className="art-photo-overlay">
                 <span className="art-photo-category">{photo.category}</span>
                 <h3 className="art-photo-title">{photo.title}</h3>
+                <span className="click-hint">Click to enlarge 🔍</span>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {selectedPhoto && (
+        <div className="lightbox-backdrop" onClick={() => setSelectedPhoto(null)}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setSelectedPhoto(null)} title="Close preview">
+              ✕
+            </button>
+            <div className="lightbox-img-wrapper">
+              <img src={selectedPhoto.url} alt={selectedPhoto.title} className="lightbox-img" />
+            </div>
+            <div className="lightbox-info">
+              <span className="lightbox-category">{selectedPhoto.category}</span>
+              <h3 className="lightbox-title">{selectedPhoto.title}</h3>
+            </div>
+          </div>
+        </div>
+      )}
 
       <style>{`
         .art-gallery-section {
@@ -139,7 +160,7 @@ export const ArtGallery: React.FC = () => {
         .art-photo-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,13,26,0.85) 100%);
+          background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(10,13,26,0.88) 100%);
           display: flex;
           flex-direction: column;
           justify-content: flex-end;
@@ -166,6 +187,108 @@ export const ArtGallery: React.FC = () => {
           font-size: 20px;
           color: #FFFFFF;
           margin-top: 4px;
+        }
+
+        .click-hint {
+          font-family: var(--font-sans);
+          font-size: 12px;
+          color: #D1D5DB;
+          margin-top: 6px;
+        }
+
+        /* Lightbox Backdrop */
+        .lightbox-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 2000;
+          background: rgba(3, 8, 26, 0.92);
+          backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 32px;
+          animation: fadeIn 0.25s ease;
+        }
+
+        .lightbox-content {
+          position: relative;
+          max-width: 900px;
+          max-height: 90vh;
+          background: #0A0D1A;
+          border: 2px solid #C9A84C;
+          border-radius: 12px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+        }
+
+        .lightbox-close {
+          position: absolute;
+          top: 16px;
+          right: 16px;
+          z-index: 10;
+          background: rgba(3, 8, 26, 0.8);
+          border: 1px solid #C9A84C;
+          color: #C9A84C;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          font-size: 18px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: transform 0.2s ease;
+        }
+
+        .lightbox-close:hover {
+          transform: scale(1.1);
+          background: #C9A84C;
+          color: #0A0D1A;
+        }
+
+        .lightbox-img-wrapper {
+          width: 100%;
+          max-height: 70vh;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: #000000;
+        }
+
+        .lightbox-img {
+          max-width: 100%;
+          max-height: 70vh;
+          object-fit: contain;
+        }
+
+        .lightbox-info {
+          padding: 20px 24px;
+          background: #0A0D1A;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+        }
+
+        .lightbox-category {
+          font-family: var(--font-sans);
+          font-weight: 700;
+          font-size: 12px;
+          color: #C9A84C;
+          text-transform: uppercase;
+        }
+
+        .lightbox-title {
+          font-family: var(--font-serif);
+          font-size: 24px;
+          color: #FFFFFF;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.96); }
+          to { opacity: 1; transform: scale(1); }
         }
 
         @media (max-width: 1024px) {

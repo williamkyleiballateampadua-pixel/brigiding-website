@@ -1,12 +1,39 @@
 :root {
-  --bg-dark: #0B0F19;
-  --bg-card: #121827;
-  --gold-primary: #D4AF37;
-  --gold-hover: #E5C058;
+  /* Color Palette - Figma Prototype & Client Directives */
+  --bg-dark-primary: #0A0D1A;
+  --bg-dark-secondary: #11162E;
+  --bg-card: #0A0D1A;
+  --bg-cream: #F5F0E8;
+  
+  /* Gold Accents & Typography */
+  --gold-primary: #C9A84C;
+  --gold-hover: #D4AF37;
   --gold-light: #F5E6B3;
-  --cream-light: #F7F4EE;
-  --text-primary: #FFFFFF;
-  --text-secondary: #9CA3AF;
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Montserrat', sans-serif;
+  --gold-gradient: linear-gradient(135deg, #C9A84C 0%, #E5C058 100%);
+  
+  /* Neutral Colors */
+  --text-white: #FFFFFF;
+  --text-cream: #EFEAE0;
+  --text-silver: #A3AED0;
+  --text-dark: #171821;
+  --text-muted-dark: #6F6C68;
+  
+  /* Borders */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-nav: rgba(255, 255, 255, 0.2);
+  --border-gold: #C9A84C;
+  
+  /* Typography */
+  --font-serif: 'DM Serif Text', serif;
+  --font-sans: 'Manrope', sans-serif;
+  
+  /* Layout Dimensions */
+  --nav-height: 90px;
+  --container-max: 1280px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  
+  /* Transitions */
+  --transition-fast: all 0.2s ease;
+  --transition-normal: all 0.3s ease;
 }

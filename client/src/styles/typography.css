@@ -1,0 +1,53 @@
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--text-white);
+}
+
+.text-gold {
+  color: var(--gold-primary);
+}
+
+.text-silver {
+  color: var(--text-silver);
+}
+
+.text-cream {
+  color: var(--text-cream);
+}
+
+.text-dark {
+  color: var(--text-dark);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.heading-xl {
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  line-height: 0.95;
+}
+
+.heading-lg {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  line-height: 1.1;
+}
+
+.heading-md {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.2;
+}
+
+.section-overline {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}

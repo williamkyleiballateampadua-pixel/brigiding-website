@@ -1,80 +1,81 @@
-# Implementation Plan: Detailed Figma Code & Screenshot Analysis & Homepage Build
+# Implementation Plan: Bottom-Up UI Build & Reconciled Design System
 
-This plan analyzes the Figma auto-layout code and 4 screenshot images you provided, answers your question about the code contents, and outlines the precise implementation strategy.
-
----
-
-## 1. Analysis: What did the code you sent contain?
-
-> [!NOTE]
-> **Answer:** The code you pasted is **NOT** just the hero page! It is the complete Figma layout code for the **ENTIRE Homepage Landing Page** (total height `5108px` by `1440px` width). It contains all **10 major sections**:
->
-> 1. `navigation-bar`: `90px` sticky top header (`#0A0D1A`) with logo, links, and gold social icons.
-> 2. `hero-section`: `720px` 50/50 split hero with editorial text on left & DragCon Brasil portrait on right.
-> 3. `marquee-ticker`: `65px` gold ribbon ticker (`#C9A84C`) scrolling `"CONFIRMADA · CONFIRMADA"`.
-> 4. `featured-event-banner`: `448px` spotlight card (`#11162E`) for *São Paulo DragCon Brasil 2026*.
-> 5. `gallery-intro`: `248px` section header (`#F5F0E8` Cream) `"An editorial life in full color"`.
-> 6. `gallery-grid-masonry`: `1544px` section (`#F5F0E8` Cream) with 3 rows of masonry lookbook photos.
-> 7. `event-highlights-section`: `789px` section (`#11162E`) `"Catch the fire live"` with 3 show cards.
-> 8. `press-quote-section`: `445px` section (`#0A0D1A`) with gold star icon & editorial quote.
-> 9. `call-to-action-section`: `479px` section (`#F5F0E8` Cream) `"Ready for your front-row moment?"`.
-> 10. `footer`: `280px` footer (`#11162E`) with logo, motto `"Art · Community · Empowerment"`, and copyright.
+This implementation plan adopts a **Bottom-Up Development Workflow** for the Brigiding website frontend:
+1. **Initialize Styles**: Populate `variables.css`, `typography.css`, and `animations.css` using our design rules.
+2. **Build Components Bottom-Up**: Implement common layout components (`Navbar.tsx`, `Footer.tsx`) first, followed by feature sections (`HeroCarousel.tsx`, `ArtGallery.tsx`, `EventsSection.tsx`, `CommunitySection.tsx`).
+3. **Assemble the Page**: Wire components together inside `pages/Home.tsx` and run verification.
 
 ---
 
-## 2. Client Modifications Applied to the Figma Code
+## 1. Recommendation Analysis: Why this approach is ideal
 
-We merge the Figma layout code with your client's specific design directives:
-
-| Feature | Figma Code / Mockup | Client's Specific Revision |
-| :--- | :--- | :--- |
-| **Top Nav Links** | `HOME · EVENTS · TICKETS · ABOUT · CONTACT` | Limit to **4 Links ONLY**: `HOME`, `TICKETS`, `ARTIST`, `COMMUNITY` |
-| **Social Icons** | 4 generic vector boxes | Limit to **3 Icons ONLY**: **IG** (Instagram), **FB** (Facebook), **YT** (YouTube) in Gold outline (`#C9A84C`) |
-| **Nav Text Colors** | White `#FFFFFF` | Silver/White (`#FFFFFF`) default $\rightarrow$ turns Gold (`#C9A84C`) on hover/active |
-| **Fonts** | `DM Serif Text` & `Manrope` | Max 2 fonts: `DM Serif Text` (headlines) & `Manrope` (body/buttons/nav) |
-| **Colors** | `#0A0D1A` Navy, `#C9A84C` Gold, `#F5F0E8` Cream | Strict adherence to exact hex codes from Figma CSS |
+> [!TIP]
+> **Why the Bottom-Up workflow is recommended:**
+> - **Foundation First**: Defining CSS variables and typography rules first guarantees that all components use centralized tokens (`#0A0D1A` Navy, `#C9A84C` Gold, `DM Serif Text`, `Manrope`) with zero style duplication.
+> - **Structural Framing**: Building `Navbar.tsx` and `Footer.tsx` first creates the header/footer frame of the application.
+> - **Isolated Section Execution**: Building feature components (`HeroCarousel`, `ArtGallery`, `EventsSection`, `CommunitySection`) sequentially prevents clutter and ensures each section matches the client specs before page assembly.
 
 ---
 
-## Proposed Changes
+## 2. Reconciled Client Design Specifications
+
+| Component | Design Rules & Specifics |
+| :--- | :--- |
+| **Navbar.tsx** | `90px` height, `#0A0D1A` background. **4 Links ONLY**: `HOME`, `TICKETS`, `ARTIST`, `COMMUNITY` (Silver text turning Gold `#C9A84C` on hover). **3 Social Icons ONLY**: **IG**, **FB**, **YT** in Gold outline. |
+| **HeroCarousel.tsx** | **5-Slide Carousel** (5-sec timer) with **5 Silver Star indicators** turning Gold for active slide. Slides: *Join Our Community*, *First Drag Race Slaysian Royale Superstar*, *Mother of the House of Ding*, *Show Producer*, *Podcaster: Beyond the Brand*. |
+| **ArtGallery.tsx** | Breaker title **`ART`** + **12 Pictures total** (3 columns $\times$ 4 rows) spanning full viewport width. |
+| **EventsSection.tsx** | Lowercase heading **`events`** with show cards (*D Intervention S3 Party*, *Drag Arena International*, *DDXCXOTA Dance Party*). |
+| **CommunitySection.tsx** | **`JOIN OUR COMMUNITY`** form with location dropdown (*Metro Manila, Luzon, Visayas, Mindanao, United States, Canada, Thailand, Vietnam, Taiwan, Australia, Japan* in alphabetical order after PH regions). |
+| **Footer.tsx** | `#11162E` background, motto *"Art · Community · Empowerment"*, IG/FB/YT gold icons, copyright, and *"✦ QUEEN OF THE STAGE"* accent. |
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Preserved Rules in `.agents/`:**
+> The master logic has been committed to Git and saved in:
+> 1. [`.agents/rules/client_design_directives.md`](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.agents/rules/client_design_directives.md)
+> 2. [`.agents/skills/brigiding-architecture/SKILL.md`](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.agents/skills/brigiding-architecture/SKILL.md)
+
+---
+
+## Proposed Execution Steps
 
 ```
 brigiding-website/
 └── client/
-    ├── index.html                      # Includes DM Serif Text & Manrope Google Fonts
+    ├── index.html                      # Imports DM Serif Text & Manrope Google Fonts
     └── src/
-        ├── styles/
+        ├── styles/                     # STEP 1: INITIALIZE STYLES
         │   ├── variables.css           # Color tokens: #0A0D1A, #11162E, #C9A84C, #F5F0E8
         │   ├── typography.css          # DM Serif Text (headlines) & Manrope (body/nav)
-        │   ├── animations.css          # Marquee ticker ribbon animation
-        │   └── main.css                # Layout containers & button styles
-        ├── components/
+        │   ├── animations.css          # Star pulse & continuous marquee ticker ribbon
+        │   └── main.css                # Full-width layout wrappers & button styles
+        ├── components/                 # STEP 2: BUILD COMPONENTS BOTTOM-UP
         │   ├── common/
-        │   │   ├── Navbar.tsx          # 90px #0A0D1A header, logo, 4 links, IG/FB/YT gold icons
-        │   │   ├── MarqueeTicker.tsx   # 65px gold #C9A84C ribbon ticker
-        │   │   └── Footer.tsx          # 280px #11162E footer with motto & copyright
+        │   │   ├── Navbar.tsx          # 90px header with 4 links, silver-to-gold hover, IG/FB/YT gold icons
+        │   │   ├── MarqueeTicker.tsx   # Solid gold ribbon ticker ("CONFIRMADA")
+        │   │   └── Footer.tsx          # Footer with motto, IG/FB/YT, copyright
         │   ├── hero/
-        │   │   └── HeroSection.tsx     # 720px 50/50 hero split matching screenshot 1
+        │   │   └── HeroCarousel.tsx    # 5-slide auto-carousel with 5 star indicators
+        │   ├── art/
+        │   │   └── ArtGallery.tsx      # ART breaker + 12 pictures in 3x4 grid
         │   ├── events/
-        │   │   ├── ShowHighlight.tsx   # 448px São Paulo DragCon Brasil 2026 showcase banner
-        │   │   └── UpcomingShows.tsx   # 789px Catch the Fire Live 3-card section
-        │   ├── gallery/
-        │   │   └── LookbookGallery.tsx # 1792px Cream section matching screenshot 2
-        │   ├── quotes/
-        │   │   └── QuoteBanner.tsx     # 445px Press quote section matching screenshot 3
-        │   └── forms/
-        │       └── BookingCtaSection.tsx# 479px Front-row CTA section matching screenshot 4
-        └── pages/
-            └── Home.tsx                # Complete 10-section single-page layout
+        │   │   └── EventsSection.tsx   # "events" section with 3 show cards
+        │   └── community/
+        │       └── CommunitySection.tsx# "JOIN OUR COMMUNITY" form with PH & international locations
+        └── pages/                      # STEP 3: ASSEMBLE PAGE
+            └── Home.tsx                # Single-page storytelling landing page
 ```
 
 ---
 
 ## Verification Plan
 
-1. **Exact Visual Match Check:**
-   - Launch dev server (`npm run dev`) and open `http://localhost:5173`.
-   - Compare side-by-side with your 4 uploaded screenshots.
-   - Verify font rendering (`DM Serif Text` headlines & `Manrope` body).
-   - Verify hover effect on Nav links (Silver $\rightarrow$ Gold `#C9A84C`).
-   - Verify 3 social icons (IG, FB, YT) in Gold outline.
+1. **Step-by-Step Verification:**
+   - Verify design tokens in `variables.css` and font loading in `index.html`.
+   - Test `Navbar.tsx` 4 nav links and IG/FB/YT gold outline icons.
+   - Test `HeroCarousel.tsx` 5-second auto-slide and 5 star indicators (silver $\rightarrow$ gold).
+   - Test `ArtGallery.tsx` 12-picture 3x4 layout.
+   - Verify `Home.tsx` assembly at `http://localhost:5173`.

@@ -186,7 +186,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       <style>{`
         .hero-section {
           width: 100%;
-          min-height: clamp(560px, 75vh, 720px);
+          height: calc(100vh - 90px);
+          min-height: 600px;
+          max-height: 850px;
           background: #0A0D1A;
           display: flex;
           justify-content: center;
@@ -198,7 +200,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-inner {
           width: 100%;
           max-width: 1440px;
-          min-height: clamp(560px, 75vh, 720px);
+          height: 100%;
           position: relative;
         }
 
@@ -212,7 +214,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           inset: 0;
           width: 100%;
-          min-height: clamp(560px, 75vh, 720px);
+          height: 100%;
           display: flex;
           flex-direction: row;
           transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -221,12 +223,13 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         .hero-left {
           width: 50%;
-          min-height: clamp(560px, 75vh, 720px);
+          height: 100%;
           padding: clamp(36px, 4vw, 64px) clamp(24px, 5vw, 80px);
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-start;
+          z-index: 5;
         }
 
         .hero-left-top {
@@ -280,13 +283,20 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           display: flex;
           align-items: center;
           gap: 12px;
+          height: 32px;
         }
 
         .star-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          padding: 0;
+          margin: 0;
           background: none;
           border: none;
           cursor: pointer;
-          padding: 4px;
           transition: transform 0.2s ease;
         }
 
@@ -299,8 +309,20 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .hero-right {
+          position: relative;
           width: 50%;
-          min-height: clamp(560px, 75vh, 720px);
+          height: 100%;
+          overflow: hidden;
+        }
+
+        /* Seamless Gradient Seam Blend into Dark Navy Left Column */
+        .hero-right::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          pointer-events: none;
+          background: linear-gradient(to right, #0A0D1A 0%, rgba(10, 13, 26, 0.5) 25%, transparent 60%);
         }
 
         .hero-photograph {
@@ -313,6 +335,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         @media (max-width: 1024px) {
           .hero-section, .hero-inner, .hero-slide {
+            height: auto;
             min-height: auto;
           }
           .hero-slide {
@@ -321,7 +344,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           }
           .hero-left {
             width: 100%;
-            min-height: auto;
+            height: auto;
             padding: 48px 32px 32px 32px;
             justify-content: flex-start;
             gap: 24px;
@@ -333,7 +356,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           .hero-right {
             width: 100%;
             height: 420px;
-            min-height: 420px;
+          }
+          .hero-right::before {
+            background: linear-gradient(to bottom, #0A0D1A 0%, rgba(10, 13, 26, 0.5) 25%, transparent 60%);
           }
         }
 
@@ -344,7 +369,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           }
           .hero-right {
             height: 320px;
-            min-height: 320px;
           }
           .star-indicators {
             gap: 8px;
@@ -356,6 +380,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 };
 
 export default HeroCarousel;
+
 
 
 

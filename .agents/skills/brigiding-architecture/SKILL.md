@@ -1,30 +1,29 @@
 ---
 name: brigiding-architecture
-description: Project architecture reference, 5-layer Express backend guidelines, React MVVM pattern, 18-table schema, and design system rules for the Brigiding Website platform.
+description: Project architecture reference, 5-layer Express backend guidelines, React MVVM pattern, 18-table schema, and client design system rules for the Brigiding Website platform.
 ---
 
 # Brigiding Architecture & Coding Standards
 
 When building, modifying, or extending features in this repository, follow these mandatory guidelines:
 
-## 1. Frontend Standards (React + MVVM)
+## 1. Client Design System Rules (See .agents/rules/client_design_directives.md)
+- **Typography (Max 2 Fonts)**: `DM Serif Text` (editorial headlines) and `Manrope` (body, navigation, buttons).
+- **Navigation (Top Menu)**: Strictly 4 links: `HOME`, `TICKETS`, `ARTIST`, `COMMUNITY`. Silver text turning Gold (`#C9A84C`) on hover/active.
+- **Social Icons**: Strictly 3 icons: **IG** (Instagram), **FB** (Facebook), **YT** (YouTube) in Gold outline (`#C9A84C`).
+- **Hero Carousel**: 5-slide 5-second auto-change carousel with 5 star indicators (silver $\rightarrow$ gold).
+- **ART Section**: 12 pictures in 3 columns x 4 rows.
+- **Form Dropdown Locations**: Metro Manila, Luzon, Visayas, Mindanao, United States, Canada, Thailand, Vietnam, Taiwan, Australia, Japan.
+
+## 2. Frontend Standards (React + MVVM)
 - **State Management**: Encapsulate component state and API side-effects inside custom ViewModel hooks (`client/src/viewmodels/`).
-- **Styling**: Always use CSS design tokens defined in `client/src/styles/variables.css`. Maintain the regal navy (`#0B0F19`) and gold (`#D4AF37`) high-fashion editorial aesthetic.
-- **Components**: Keep components focused on UI rendering. Derive layout and interaction logic from ViewModels.
+- **Styling**: Always use CSS design tokens defined in `client/src/styles/variables.css`. Maintain `#0A0D1A` dark navy, `#C9A84C` gold, and `#F5F0E8` cream palette.
 
-## 2. Backend Standards (5-Layer Express API)
-- **Routes (`server/src/routes/`)**: Map HTTP verbs to controller methods under `/api/v1/`.
-- **Middleware (`server/src/middleware/`)**: Perform authentication, RBAC, and Zod input validation.
-- **Controllers (`server/src/controllers/`)**: Extract request parameters and delegate business logic to Services. Do not write raw DB queries in controllers.
-- **Services (`server/src/services/`)**: Implement business logic, validations, and data transformations.
-- **Repositories (`server/src/repositories/`)**: Perform database queries using `supabasePublic` or `supabaseAdmin`.
-
-## 3. Database Schema (18 Tables)
-- Use exact column names matching `server/src/db/migrations/001_initial_schema.sql`.
-- Enforce RLS policies for public data reads and lead submissions.
+## 3. Backend Standards (5-Layer Express API)
+- `Routes` $\rightarrow$ `Middleware` $\rightarrow$ `Controllers` $\rightarrow$ `Services` $\rightarrow$ `Repositories` $\rightarrow$ `Supabase DB`.
 
 ## 4. Git Workflow
 - Always create feature/chore branches using the `Category/Ticket-Description` pattern:
-  - `feature/add-component-name`
+  - `feature/homepage-storytelling-carousel`
   - `chore/update-config`
   - `bugfix/fix-issue-name`

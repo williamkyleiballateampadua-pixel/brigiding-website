@@ -1,62 +1,15 @@
-# Implementation Plan: Brigiding Personal Brand & Lead Generation Platform
+# Implementation Plan: Architecture Documentation & Workspace Rules Setup
 
-This implementation plan outlines the architecture, database schema, REST API domains, and deployment workflow for the **Brigiding Personal Brand & Lead Generation Website**. The plan incorporates your detailed business requirements, 18-table relational schema, 6-domain API specification, and modular monolithic architecture (Express backend + React MVVM frontend).
-
----
-
-## Phased Rollout Overview
-
-- **Phase 1 (Immediate Execution):** 
-  - **Step 1:** Git Repository Initialization & GitHub Remote Push Guide.
-  - **Step 2:** Local Preparation of Supabase SQL Migrations (18 tables), Seed Data, & Supabase SDK Setup.
-  - **Step 3:** Vercel Deployment Config (`vercel.json`) & Environment Variable Templates (`.env.example`).
-- **Phase 2:** Express REST API Layer & Supabase Repository Integration (Domains 1–3).
-- **Phase 3:** React Frontend (MVVM) Design System, Public Brand & Lead Capture (Typeform + Ticket Forms).
-- **Phase 4:** Merch Storefront, Payments (Stripe/PayMongo), & Admin Management Dashboard (Domains 4–6).
+This plan details the creation of persistent architectural guidelines, system logic, MVVM patterns, 5-layer backend standards, and design system specifications inside the `.agents/` directory for long-term project reference.
 
 ---
 
 ## User Review Required
 
 > [!IMPORTANT]
-> **Start-from-Scratch Strategy (GitHub $\rightarrow$ Supabase $\rightarrow$ Vercel):**
-> We will guide you step-by-step right from the beginning:
-> 1. Initialize local Git repository & setup `.gitignore`.
-> 2. Create local SQL migration scripts (`001_initial_schema.sql` & `002_seed_data.sql`), Supabase SDK helpers, and Vercel configuration files.
-> 3. Connect your project to GitHub, Supabase, and Vercel.
-
----
-
-## Step-by-Step Complete Beginner Guide
-
-### Step 1: GitHub Repository Setup
-1. Open GitHub ([github.com](https://github.com)) and click **New Repository**.
-2. Name it `brigiding-website`, set visibility to **Public** or **Private**, and click **Create repository** (do not check "Initialize with README").
-3. Copy the repository URL (e.g., `https://github.com/<your-username>/brigiding-website.git`).
-4. In our project terminal, we will run:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: Project structure, Supabase migrations & Vercel config"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/brigiding-website.git
-   git push -u origin main
-   ```
-
-### Step 2: Free Supabase Setup (Database)
-1. Sign up for free at [supabase.com](https://supabase.com).
-2. Click **New Project**, name it `brigiding-website`, set your database password, and select your region.
-3. In **Project Settings $\rightarrow$ API**, copy your `Project URL`, `anon / public key`, and `service_role key`.
-4. Go to **SQL Editor** in Supabase dashboard:
-   - Paste content from `server/src/db/migrations/001_initial_schema.sql` $\rightarrow$ Click **Run**.
-   - Paste content from `server/src/db/migrations/002_seed_data.sql` $\rightarrow$ Click **Run**.
-
-### Step 3: Free Vercel Setup (Continuous Deployment)
-1. Sign up at [vercel.com](https://vercel.com) using your GitHub account.
-2. Click **Add New... $\rightarrow$ Project**.
-3. Import `brigiding-website` from your GitHub repos.
-4. Under **Environment Variables**, add `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY`.
-5. Click **Deploy**! (Every push to GitHub will now automatically deploy your website!).
+> **Persistent Architecture & Rules Configuration:**
+> 1. We will record the complete **5-Layer Express Backend** (`Routes` $\rightarrow$ `Controllers` $\rightarrow$ `Services` $\rightarrow$ `Repositories` $\rightarrow$ `Supabase`), **React MVVM Pattern**, **18-Table Database Schema**, **6 REST API Domains**, and **Regal Navy & Gold Design System** into `.agents/rules/architecture_and_design_system.md`.
+> 2. We will also create a dedicated skill folder `.agents/skills/brigiding-architecture/SKILL.md` so future agent sessions can immediately reference the full project specification without losing context.
 
 ---
 
@@ -64,81 +17,41 @@ This implementation plan outlines the architecture, database schema, REST API do
 
 ```
 brigiding-website/
-├── .gitignore                  # Excludes node_modules, .env, build artifacts
-├── vercel.json                 # Vercel deployment configuration (Frontend SPA + Serverless Express API)
-├── .env.example                # Shared environment variable template
-├── client/                     # React Frontend (MVVM Architecture)
-│   ├── package.json
-│   ├── vite.config.ts
-│   └── src/
-│       ├── styles/             # Design Tokens & Typography
-│       ├── models/             # Interfaces matching DB Schema
-│       ├── viewmodels/         # MVVM State logic
-│       ├── services/           # REST API client
-│       └── components/         # Hero, Gallery, Events, Typeform CTA, Store
-│
-└── server/                     # Express Backend & Supabase DB Layer
-    ├── package.json
-    ├── vercel.json             # Serverless Express handler config
-    └── src/
-        ├── db/
-        │   ├── supabase.ts     # Supabase Client setup
-        │   └── migrations/
-        │       ├── 001_initial_schema.sql # Complete 18-table schema DDL
-        │       └── 002_seed_data.sql      # Seed data (Events, Gallery, Announcements)
-        ├── repositories/       # Supabase data access
-        ├── services/           # Business logic & Typeform Webhook
-        ├── controllers/        # Request/Response handlers
-        └── routes/             # REST API routes (Domains 1-6)
+└── .agents/
+    ├── rules/
+    │   ├── git_conventions.md                 # Category/Ticket-Description Git branch rules
+    │   └── architecture_and_design_system.md  # System overview, 5-layer backend, MVVM, 18-table DB schema & design tokens
+    └── skills/
+        └── brigiding-architecture/
+            └── SKILL.md                       # Comprehensive skill reference for project architecture
 ```
 
 ---
 
-### Phase 1 Execution Details
-
-#### [NEW] [.gitignore](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.gitignore)
-- Git ignore file preventing node_modules, dist, .env, logs, and system files from being committed.
-
-#### [NEW] [001_initial_schema.sql](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/server/src/db/migrations/001_initial_schema.sql)
-Creates custom ENUM types and all 18 PostgreSQL tables matching your domain model:
-- `USERS`, `PROFILES`, `ADDRESSES`, `EVENTS`, `GALLERY_ITEMS`, `PORTFOLIO_MILESTONES`, `SITE_ANNOUNCEMENTS`, `BOOKING_INQUIRIES`, `TICKET_APPLICATIONS`, `CATEGORIES`, `PRODUCTS`, `PRODUCT_VARIANTS`, `CARTS`, `CART_ITEMS`, `ORDERS`, `ORDER_ITEMS`, `PAYMENTS`, `SHIPMENTS`.
-
-#### [NEW] [002_seed_data.sql](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/server/src/db/migrations/002_seed_data.sql)
-- Seed script for events (*DragCon Brasil 2026*), Lookbook photos, ticker announcements, and product categories.
-
-#### [NEW] [server/src/db/supabase.ts](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/server/src/db/supabase.ts)
-- Supabase SDK client initialization script with environment variable validation.
-
-#### [NEW] [vercel.json](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/vercel.json)
-- Routing rules for Express serverless function API (`/api/*`) and React SPA build.
-
-#### [NEW] [.env.example](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.env.example)
-- Documents required environment variable keys for local dev and cloud deployment.
+### Step 1: Create Comprehensive Workspace Rule
+#### [NEW] [.agents/rules/architecture_and_design_system.md](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.agents/rules/architecture_and_design_system.md)
+Documents:
+- **System Purpose**: Personal brand digital portfolio, lead generation, booking channels, and exclusive merch drops.
+- **Frontend Architecture**: React (Vite) + MVVM pattern (`Models` interfaces, `Services` API clients, `ViewModels` custom hooks, `Components` presentation views).
+- **Backend Architecture (5-Layer Monolithic Express API)**:
+  1. `Routes`: URL mapping (`/api/v1/*`).
+  2. `Middleware`: Auth JWT verification, RBAC, Zod validation, Error handling.
+  3. `Controllers`: Request parsing & response formatting.
+  4. `Services`: Business logic, calculations, Typeform parser.
+  5. `Repositories` & `Supabase DB`: PostgreSQL query execution.
+- **Full Database Schema (18 Tables & ENUMs)**: USERS, PROFILES, ADDRESSES, EVENTS, GALLERY_ITEMS, PORTFOLIO_MILESTONES, SITE_ANNOUNCEMENTS, BOOKING_INQUIRIES, TICKET_APPLICATIONS, CATEGORIES, PRODUCTS, PRODUCT_VARIANTS, CARTS, CART_ITEMS, ORDERS, ORDER_ITEMS, PAYMENTS, SHIPMENTS.
+- **Design Tokens**: Dark Navy (`#080C14`), Regal Gold (`#D4AF37`), Editorial Cream (`#F7F4EE`), `Playfair Display` serif headlines, `Montserrat` body.
 
 ---
 
-### Phase 2: Express Backend REST API Layer (Domains 1–3)
-- Authentication & User Profiles (`/api/v1/auth`, `/api/v1/profile`)
-- Brand Content, Events & CMS (`/api/v1/site`, `/api/v1/events`, `/api/v1/gallery`, `/api/v1/milestones`)
-- Lead Generation & Typeform Ingestion (`/api/v1/inquiries`, `/api/v1/tickets/apply`, `/api/v1/webhooks/typeform`)
-
----
-
-### Phase 3: React Frontend (MVVM) & Design System
-- High-fashion regal dark navy & gold design system.
-- Typeform redirect CTA integration for bookings & inquiries.
-- Ticket application modal with Supabase persistence.
-
----
-
-### Phase 4: Merchandise Storefront & Admin CMS
-- API Domains 4–6 (Catalog, Cart, Payments, Admin Lead Pipeline).
+### Step 2: Create Persistent Custom Skill
+#### [NEW] [.agents/skills/brigiding-architecture/SKILL.md](file:///c:/Users/William%20Kyle/Development/react/brigiding-website/.agents/skills/brigiding-architecture/SKILL.md)
+Creates a reusable skill instruction file detailing how to maintain, extend, and implement features matching the Brigiding project conventions.
 
 ---
 
 ## Verification Plan
 
-### Phase 1 Verification
-1. Verify git repository status (`git status`) and `.gitignore` file.
-2. Verify SQL migration files syntax (`001_initial_schema.sql`, `002_seed_data.sql`).
-3. Verify Supabase client instantiation logic and `vercel.json` routing configuration.
+1. Verify `.agents/rules/architecture_and_design_system.md` file format and completeness.
+2. Verify `.agents/skills/brigiding-architecture/SKILL.md` YAML frontmatter and instruction guidelines.
+3. Commit documentation to git on branch `chore/architecture-documentation`.

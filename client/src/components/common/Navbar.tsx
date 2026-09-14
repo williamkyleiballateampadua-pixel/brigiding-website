@@ -72,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
 
           {/* Facebook */}
           <a
-            href="https://facebook.com/brigidingofficial"
+            href="https://www.facebook.com/brigiding"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon-btn"

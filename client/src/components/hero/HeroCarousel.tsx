@@ -28,7 +28,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'International Drag Royalty.',
       description: 'Reigning supreme on global stages, bringing authentic Filipina excellence and runway dominance to sold-out arenas worldwide.',
       ctaText: 'EXPLORE SHOWS →',
-      imageUrl: '/Pictures/20%20-%20Best%20Drag%20Look.jpg',
+      imageUrl: '/Pictures/BRIGIDING-252.jpg',
     },
     {
       id: 3,

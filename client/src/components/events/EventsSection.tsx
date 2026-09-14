@@ -15,21 +15,21 @@ export const EventsSection: React.FC = () => {
       date: 'SEPTEMBER 25, 2026',
       title: 'D Intervention S3 Party',
       location: 'BSK Manila · Greenfield District. Drag PH live screening, hosted performance showcases and full house energy.',
-      imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600',
+      imageUrl: '/Pictures/13%20-%20Pink%20Pak%20Boom%20(2).jpg',
     },
     {
       id: '2',
       date: 'OCTOBER 10, 2026',
       title: 'Drag Arena International',
       location: 'New Frontier Theater. An epic cross-border stage showdown displaying high drama and runway choreography.',
-      imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600',
+      imageUrl: '/Pictures/14%20-%20Ruveal.jpg',
     },
     {
       id: '3',
       date: 'NOVEMBER 14, 2026',
       title: 'DDXCXOTA Dance Party',
       location: 'Rampa Club · Quezon City. A night of sweat, music, bass, and royalty featuring Manila’s supreme performing collective.',
-      imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=600',
+      imageUrl: '/Pictures/19%20-%20Dyosa%20LSFYL.jpg',
     },
   ];
 
@@ -48,7 +48,7 @@ export const EventsSection: React.FC = () => {
             <div key={evt.id} className="event-card">
               <div
                 className="event-card-img"
-                style={{ backgroundImage: `url(${evt.imageUrl})` }}
+                style={{ backgroundImage: `url("${evt.imageUrl}")` }}
               />
               <div className="event-card-body">
                 <span className="event-card-date">{evt.date}</span>

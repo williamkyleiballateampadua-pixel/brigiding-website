@@ -10,7 +10,7 @@ export const ShowHighlight: React.FC = () => {
             className="banner-image"
             style={{
               backgroundImage:
-                'url(https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200)',
+                'url("/Pictures/9%20-%20Shake%20Rattle%20&%20Rampa.jpg")',
             }}
           />
         </div>

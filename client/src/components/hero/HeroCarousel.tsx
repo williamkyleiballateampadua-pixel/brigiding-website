@@ -19,7 +19,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Glamour without borders.',
       description: 'Experience Filipino artistry, fearless high-fashion performance, and unforgettable stage energy combined in a global drag dynasty.',
       ctaText: 'GET IN TOUCH →',
-      imageUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1200',
+      imageUrl: '/Pictures/1%20-%20Promo%20Look.jpg',
     },
     {
       id: 2,
@@ -28,7 +28,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'International Drag Royalty.',
       description: 'Reigning supreme on global stages, bringing authentic Filipina excellence and runway dominance to sold-out arenas worldwide.',
       ctaText: 'EXPLORE SHOWS →',
-      imageUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=1200',
+      imageUrl: '/Pictures/20%20-%20Best%20Drag%20Look.jpg',
     },
     {
       id: 3,
@@ -37,7 +37,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Nurturing legendary talent.',
       description: 'Founding mother of Manila’s premier drag dynasty, cultivating high-octane choreography and boundary-pushing performance art.',
       ctaText: 'MEET THE HOUSE →',
-      imageUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1200',
+      imageUrl: '/Pictures/5%20-%20Terno%20Look.jpg',
     },
     {
       id: 4,
@@ -46,7 +46,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Mastermind of stage & spectacle.',
       description: 'Directing and producing sold-out theatrical galas, Drag PH premiere nights, and cross-border performance showcases.',
       ctaText: 'VIEW PRODUCTIONS →',
-      imageUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=1200',
+      imageUrl: '/Pictures/14%20-%20Ruveal.jpg',
     },
     {
       id: 5,
@@ -55,7 +55,7 @@ export const HeroCarousel: React.FC = () => {
       tagline: 'Unfiltered tea behind the lashes.',
       description: 'Host of the acclaimed podcast unpacking the art, business, grit, and chaos of international drag stardom.',
       ctaText: 'LISTEN NOW →',
-      imageUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=1200',
+      imageUrl: '/Pictures/11%20-%20Pearl%20Look.jpg',
     },
   ];
 
@@ -118,7 +118,7 @@ export const HeroCarousel: React.FC = () => {
         <div className="hero-right">
           <div
             className="hero-photograph"
-            style={{ backgroundImage: `url(${currentSlide.imageUrl})` }}
+            style={{ backgroundImage: `url("${currentSlide.imageUrl}")` }}
           />
         </div>
       </div>

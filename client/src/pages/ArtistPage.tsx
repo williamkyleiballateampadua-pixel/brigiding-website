@@ -27,7 +27,7 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
                 <div
                   className="artist-portrait"
                   style={{
-                    backgroundImage: `url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800')`,
+                    backgroundImage: `url('/Pictures/viber_image_2021-04-08_14-34-56.jpg')`,
                   }}
                 />
                 <div className="photo-caption">

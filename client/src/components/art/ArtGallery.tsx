@@ -8,20 +8,20 @@ interface ArtPhoto {
 }
 
 export const ArtGallery: React.FC = () => {
-  // 12 High-Fashion Drag Photography Placeholders (3 columns x 4 rows)
+  // 12 Authentic High-Fashion Drag Photography Assets (3 columns x 4 rows)
   const photos: ArtPhoto[] = [
-    { id: 1, title: 'Slaysian Royale Gold armor', url: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800', category: 'Lookbook' },
-    { id: 2, title: 'D Intervention Poster', url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800', category: 'Stage' },
-    { id: 3, title: 'Vogue Editorial Philippines', url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800', category: 'Editorial' },
-    { id: 4, title: 'Golden Sunburst Headpiece', url: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800', category: 'Lookbook' },
-    { id: 5, title: 'The Theatre at Solaire Gala', url: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=800', category: 'Stage' },
-    { id: 6, title: 'Filipina High Drama Silhouette', url: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=800', category: 'Editorial' },
-    { id: 7, title: 'Royal Crimson Runway', url: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=800', category: 'Lookbook' },
-    { id: 8, title: 'DragCon Brasil Mainstage', url: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800', category: 'Stage' },
-    { id: 9, title: 'Empowerment Lighting Showcase', url: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800', category: 'Editorial' },
-    { id: 10, title: 'High-Fashion Sequined Cape', url: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800', category: 'Lookbook' },
-    { id: 11, title: 'Beyond the Brand Live', url: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800', category: 'Stage' },
-    { id: 12, title: 'Editorial Sunset Shoot', url: 'https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=800', category: 'Editorial' },
+    { id: 1, title: 'Promo Official Look', url: '/Pictures/1%20-%20Promo%20Look.jpg', category: 'Lookbook' },
+    { id: 2, title: 'Entrance Runway Fantasy', url: '/Pictures/2%20-%20Entrance%20Look.jpg', category: 'Stage' },
+    { id: 3, title: 'Filipina Terno Couture', url: '/Pictures/5%20-%20Terno%20Look.jpg', category: 'Editorial' },
+    { id: 4, title: 'Sagalamazon High Drama', url: '/Pictures/7%20-%20Sagalamazon.jpg', category: 'Lookbook' },
+    { id: 5, title: 'Pop Off Girl Group Showcase', url: '/Pictures/8%20-%20Girl%20Group%20(Pop%20Off).jpg', category: 'Stage' },
+    { id: 6, title: 'Shake Rattle & Rampa', url: '/Pictures/9%20-%20Shake%20Rattle%20&%20Rampa.jpg', category: 'Editorial' },
+    { id: 7, title: 'Jaya Rusical Performance', url: '/Pictures/10%20-%20Jaya%20Rusical.jpg', category: 'Stage' },
+    { id: 8, title: 'Pearl High-Fashion Editorial', url: '/Pictures/11%20-%20Pearl%20Look.jpg', category: 'Editorial' },
+    { id: 9, title: 'Pink Pak Boom Fantasy', url: '/Pictures/13%20-%20Pink%20Pak%20Boom.jpg', category: 'Lookbook' },
+    { id: 10, title: 'Shop Shop Ball High Drama', url: '/Pictures/16%20-%20Shop%20Shop%20Ball.jpg', category: 'Lookbook' },
+    { id: 11, title: 'Divisoria Runway Concept', url: '/Pictures/17%20-%20Divisoria%20Look.jpg', category: 'Editorial' },
+    { id: 12, title: 'Best Drag Supreme Look', url: '/Pictures/20%20-%20Best%20Drag%20Look.jpg', category: 'Stage' },
   ];
 
   return (
@@ -45,7 +45,7 @@ export const ArtGallery: React.FC = () => {
             <div key={photo.id} className="art-photo-card">
               <div
                 className="art-photo-img"
-                style={{ backgroundImage: `url(${photo.url})` }}
+                style={{ backgroundImage: `url("${photo.url}")` }}
               />
               <div className="art-photo-overlay">
                 <span className="art-photo-category">{photo.category}</span>

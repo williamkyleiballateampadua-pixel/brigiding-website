@@ -20,7 +20,7 @@ export const ArtGalleryTickets: React.FC = () => {
       time: '6:00 PM GMT-3',
       location: 'São Paulo, Brazil',
       venue: 'Expo Center Norte',
-      posterUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=800',
+      posterUrl: '/Pictures/1%20-%20Promo%20Look.jpg',
       offsetLevel: 'level-top',
     },
     {
@@ -30,7 +30,7 @@ export const ArtGalleryTickets: React.FC = () => {
       time: '9:00 PM PHT',
       location: 'Greenfield District, Mandaluyong',
       venue: 'BSK Manila',
-      posterUrl: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=800',
+      posterUrl: '/Pictures/13%20-%20Pink%20Pak%20Boom%20(2).jpg',
       offsetLevel: 'level-middle',
     },
     {
@@ -40,7 +40,7 @@ export const ArtGalleryTickets: React.FC = () => {
       time: '8:00 PM PHT',
       location: 'Quezon City, Philippines',
       venue: 'New Frontier Theater',
-      posterUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=800',
+      posterUrl: '/Pictures/7%20-%20Sagalamazon.jpg',
       offsetLevel: 'level-bottom',
     },
     {
@@ -50,7 +50,7 @@ export const ArtGalleryTickets: React.FC = () => {
       time: '10:00 PM PHT',
       location: 'Quezon City, Philippines',
       venue: 'Rampa Club QC',
-      posterUrl: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800',
+      posterUrl: '/Pictures/18%20-%20Twinning%20Look.jpg',
       offsetLevel: 'level-top',
     },
   ];
@@ -75,7 +75,7 @@ export const ArtGalleryTickets: React.FC = () => {
               <div className="art-frame-border">
                 <div
                   className="poster-img"
-                  style={{ backgroundImage: `url(${evt.posterUrl})` }}
+                  style={{ backgroundImage: `url("${evt.posterUrl}")` }}
                 />
                 <div className="gallery-plaque">
                   <span className="plaque-tag">{evt.date} · {evt.time}</span>

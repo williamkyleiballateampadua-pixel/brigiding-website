@@ -319,3 +319,27 @@ CREATE INDEX IF NOT EXISTS idx_gallery_category ON gallery_items(category);
 CREATE INDEX IF NOT EXISTS idx_products_slug ON products(slug);
 CREATE INDEX IF NOT EXISTS idx_inquiries_status ON booking_inquiries(status);
 CREATE INDEX IF NOT EXISTS idx_ticket_apps_event ON ticket_applications(event_id);
+
+-- Enable Row Level Security (RLS) and enable public read policies for public tables
+ALTER TABLE events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE gallery_items ENABLE ROW LEVEL SECURITY;
+ALTER TABLE portfolio_milestones ENABLE ROW LEVEL SECURITY;
+ALTER TABLE site_announcements ENABLE ROW LEVEL SECURITY;
+ALTER TABLE categories ENABLE ROW LEVEL SECURITY;
+ALTER TABLE products ENABLE ROW LEVEL SECURITY;
+ALTER TABLE product_variants ENABLE ROW LEVEL SECURITY;
+ALTER TABLE booking_inquiries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE ticket_applications ENABLE ROW LEVEL SECURITY;
+
+-- Allow public read access to content
+CREATE POLICY "Allow public select on events" ON events FOR SELECT USING (true);
+CREATE POLICY "Allow public select on gallery_items" ON gallery_items FOR SELECT USING (true);
+CREATE POLICY "Allow public select on portfolio_milestones" ON portfolio_milestones FOR SELECT USING (true);
+CREATE POLICY "Allow public select on site_announcements" ON site_announcements FOR SELECT USING (true);
+CREATE POLICY "Allow public select on categories" ON categories FOR SELECT USING (true);
+CREATE POLICY "Allow public select on products" ON products FOR SELECT USING (true);
+CREATE POLICY "Allow public select on product_variants" ON product_variants FOR SELECT USING (true);
+
+-- Allow public insertion into lead tables
+CREATE POLICY "Allow public insert into booking_inquiries" ON booking_inquiries FOR INSERT WITH CHECK (true);
+CREATE POLICY "Allow public insert into ticket_applications" ON ticket_applications FOR INSERT WITH CHECK (true);

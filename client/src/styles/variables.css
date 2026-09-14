@@ -1,0 +1,12 @@
+:root {
+  --bg-dark: #0B0F19;
+  --bg-card: #121827;
+  --gold-primary: #D4AF37;
+  --gold-hover: #E5C058;
+  --gold-light: #F5E6B3;
+  --cream-light: #F7F4EE;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+}

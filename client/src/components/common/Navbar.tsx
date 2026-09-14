@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
 
           {/* YouTube */}
           <a
-            href="https://youtube.com/@brigiding"
+            href="https://www.youtube.com/@Brigidingofficial"
             target="_blank"
             rel="noopener noreferrer"
             className="social-icon-btn"
@@ -106,11 +106,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
           z-index: 1000;
           width: 100%;
           height: 90px;
-          background: #0A0D1A;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          background: linear-gradient(135deg, #03081A 0%, #081B4B 50%, #040D28 100%);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+          border-bottom: 1px solid rgba(201, 168, 76, 0.25);
           display: flex;
           align-items: center;
           justify-content: center;
+          backdrop-filter: blur(10px);
         }
 
         .navbar-inner {
@@ -171,6 +173,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
         .nav-item.active .nav-label {
           color: #C9A84C;
           font-weight: 700;
+          text-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
         }
 
         .active-indicator {
@@ -179,6 +182,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
           background: #C9A84C;
           margin-top: 4px;
           opacity: 0;
+          box-shadow: 0 0 8px #C9A84C;
           transition: opacity 0.2s ease;
         }
 
@@ -200,12 +204,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
           height: 32px;
           border: 1px solid #C9A84C;
           border-radius: 4px;
-          transition: background 0.2s ease, transform 0.2s ease;
+          background: rgba(3, 8, 26, 0.5);
+          transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .social-icon-btn:hover {
-          background: rgba(201, 168, 76, 0.15);
+          background: rgba(201, 168, 76, 0.2);
           transform: translateY(-2px);
+          box-shadow: 0 0 12px rgba(201, 168, 76, 0.4);
         }
 
         @media (max-width: 1024px) {

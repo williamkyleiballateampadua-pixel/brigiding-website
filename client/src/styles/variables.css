@@ -5,6 +5,10 @@
   --bg-card: #0A0D1A;
   --bg-cream: #F5F0E8;
   
+  /* Navigation Silk Blue Gradient (Client Reference) */
+  --nav-bg-gradient: linear-gradient(135deg, #03081A 0%, #081B4B 50%, #040D28 100%);
+  --nav-silk-glow: radial-gradient(circle at 50% 0%, rgba(13, 37, 102, 0.4) 0%, rgba(3, 8, 26, 0.95) 100%);
+  
   /* Gold Accents & Typography */
   --gold-primary: #C9A84C;
   --gold-hover: #D4AF37;
@@ -20,7 +24,7 @@
   
   /* Borders */
   --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-nav: rgba(255, 255, 255, 0.2);
+  --border-nav: rgba(201, 168, 76, 0.25);
   --border-gold: #C9A84C;
   
   /* Typography */

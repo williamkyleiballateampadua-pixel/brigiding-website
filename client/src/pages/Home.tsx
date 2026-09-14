@@ -10,29 +10,25 @@ import BookingCtaSection from '../components/forms/BookingCtaSection';
 import CommunitySection from '../components/community/CommunitySection';
 import Footer from '../components/common/Footer';
 
-export const Home: React.FC = () => {
+interface HomeProps {
+  onNavigate?: (tab: string) => void;
+}
+
+export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const [activeTab, setActiveTab] = useState('HOME');
 
   const handleNavigate = (tab: string) => {
     setActiveTab(tab);
-    const elementMap: Record<string, string> = {
-      HOME: 'top',
-      TICKETS: 'tickets',
-      ARTIST: 'artist',
-      COMMUNITY: 'community',
-    };
-    const targetId = elementMap[tab];
-    if (targetId === 'top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (targetId) {
-      const el = document.getElementById(targetId);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    if (tab !== 'HOME' && onNavigate) {
+      onNavigate(tab);
+      return;
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <div className="homepage-wrapper">
-      {/* 1. Navigation Bar (90px, #0A0D1A, 4 Links: HOME, TICKETS, ARTIST, COMMUNITY) */}
+      {/* 1. Navigation Bar (90px, Royal Blue Silk, 4 Links: HOME, TICKETS, ARTIST, COMMUNITY) */}
       <Navbar activeTab={activeTab} onNavigate={handleNavigate} />
 
       {/* 2. Hero 5-Slide 5-Star Auto Carousel (720px, #0A0D1A) */}

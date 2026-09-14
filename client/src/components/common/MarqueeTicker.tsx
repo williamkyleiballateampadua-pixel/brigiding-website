@@ -5,7 +5,7 @@ interface MarqueeTickerProps {
 }
 
 export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
-  text = 'CONFIRMADA · SÃO PAULO DRAGCON BRASIL 2026 · BRIGIDING LIVE IN CONCERT · BOOKING INQUIRIES OPEN · ',
+  text = 'BRIGIDING LIVE IN CONCERT · BOOKING INQUIRIES OPEN · QUEEN OF THE STAGE · INTERNATIONAL DRAG ROYALTY · ',
 }) => {
   return (
     <div className="marquee-ticker-container">
@@ -22,6 +22,14 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
           display: flex;
           align-items: center;
           overflow: hidden;
+          position: relative;
+        }
+
+        .animate-marquee {
+          display: flex;
+          white-space: nowrap;
+          animation: marquee 45s linear infinite;
+          will-change: transform;
         }
 
         .marquee-text {
@@ -31,8 +39,13 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
           line-height: 33px;
           text-transform: uppercase;
           color: #11162E;
-          padding-right: 12px;
+          padding-right: 24px;
           letter-spacing: 0.05em;
+        }
+
+        @keyframes marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
         }
       `}</style>
     </div>
@@ -40,3 +53,4 @@ export const MarqueeTicker: React.FC<MarqueeTickerProps> = ({
 };
 
 export default MarqueeTicker;
+

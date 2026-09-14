@@ -79,11 +79,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     });
   }, []);
 
-  // Auto-play slide transition every 5 seconds
+  // Auto-play slide transition every 8 seconds (slowed down for comfortable reading)
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(timer);
   }, [slides.length]);
@@ -117,24 +117,29 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
               >
                 {/* Hero Left Content Column */}
                 <div className="hero-left">
-                  <div className="section-overline">{slide.overline}</div>
+                  {/* Top Text Content Stack */}
+                  <div className="hero-left-top">
+                    <div className="section-overline">{slide.overline}</div>
 
-                  <div className="hero-title-group">
-                    <h1 className="hero-title">{slide.title}</h1>
-                    <p className="hero-tagline">{slide.tagline}</p>
+                    <div className="hero-title-group">
+                      <h1 className="hero-title">{slide.title}</h1>
+                      <p className="hero-tagline">{slide.tagline}</p>
+                    </div>
+
+                    <p className="hero-description">{slide.description}</p>
+
+                    <div className="hero-cta">
+                      <button
+                        onClick={(e) => handleCtaClick(e, slide.targetTab)}
+                        className="button-gold"
+                      >
+                        {slide.ctaText}
+                      </button>
+                    </div>
                   </div>
 
-                  <p className="hero-description">{slide.description}</p>
-
-                  <div className="hero-cta-group">
-                    <button
-                      onClick={(e) => handleCtaClick(e, slide.targetTab)}
-                      className="button-gold"
-                    >
-                      {slide.ctaText}
-                    </button>
-
-                    {/* 5 Star Indicators placed directly inside left column stack */}
+                  {/* Bottom Anchored Star Indicators */}
+                  <div className="hero-left-bottom">
                     <div className="star-indicators">
                       {slides.map((starSlide, starIndex) => {
                         const isStarActive = starIndex === currentIndex;
@@ -210,19 +215,30 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           min-height: clamp(560px, 75vh, 720px);
           display: flex;
           flex-direction: row;
-          transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
           will-change: opacity;
         }
 
         .hero-left {
           width: 50%;
           min-height: clamp(560px, 75vh, 720px);
-          padding: 40px clamp(24px, 5vw, 80px);
+          padding: clamp(36px, 4vw, 64px) clamp(24px, 5vw, 80px);
           display: flex;
           flex-direction: column;
-          justify-content: center;
+          justify-content: space-between;
           align-items: flex-start;
-          gap: clamp(16px, 2.2vw, 28px);
+        }
+
+        .hero-left-top {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: clamp(16px, 2vw, 24px);
+        }
+
+        .hero-left-bottom {
+          margin-top: auto;
+          padding-top: 24px;
         }
 
         .hero-title-group {
@@ -256,11 +272,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           max-width: 540px;
         }
 
-        .hero-cta-group {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 20px;
+        .hero-cta {
           margin-top: 8px;
         }
 
@@ -283,7 +295,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .star-btn.active svg {
-          filter: drop-shadow(0 0 8px rgba(201, 168, 76, 0.6));
+          filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.7));
         }
 
         .hero-right {
@@ -311,6 +323,12 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             width: 100%;
             min-height: auto;
             padding: 48px 32px 32px 32px;
+            justify-content: flex-start;
+            gap: 24px;
+          }
+          .hero-left-bottom {
+            margin-top: 0;
+            padding-top: 0;
           }
           .hero-right {
             width: 100%;
@@ -338,5 +356,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 };
 
 export default HeroCarousel;
+
 
 

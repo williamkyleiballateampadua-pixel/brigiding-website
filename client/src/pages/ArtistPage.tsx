@@ -9,7 +9,7 @@ interface ArtistPageProps {
 
 export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
   return (
-    <div className="artist-page-wrapper" style={{ background: '#0A0D1A', color: '#FFFFFF', minHeight: '100vh' }}>
+    <div className="artist-page-wrapper" style={{ background: '#FFFFFF', color: '#171821', minHeight: '100vh' }}>
       <Navbar activeTab="ARTIST" onNavigate={onNavigate} />
 
       <section className="artist-hero-section">
@@ -103,7 +103,7 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
         .artist-tagline {
           font-family: var(--font-sans);
           font-size: 18px;
-          color: #EFEAE0;
+          color: #475569;
           text-align: center;
         }
 
@@ -116,11 +116,11 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
         }
 
         .photo-frame-border {
-          background: #11162E;
+          background: #0A0D1A;
           border: 3px solid #C9A84C;
           border-radius: 8px;
           padding: 16px;
-          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         .artist-portrait {
@@ -153,7 +153,7 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
         .bio-subheading {
           font-family: var(--font-serif);
           font-size: 32px;
-          color: #FFFFFF;
+          color: #171821;
           line-height: 1.2;
         }
 
@@ -161,7 +161,7 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
           font-family: var(--font-sans);
           font-size: 16px;
           line-height: 1.7;
-          color: #EFEAE0;
+          color: #475569;
         }
 
         .artist-stats-grid {
@@ -172,13 +172,14 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
         }
 
         .stat-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(201, 168, 76, 0.3);
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
           border-radius: 6px;
           padding: 16px;
           display: flex;
           flex-direction: column;
           align-items: center;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .stat-value {
@@ -190,7 +191,7 @@ export const ArtistPage: React.FC<ArtistPageProps> = ({ onNavigate }) => {
         .stat-label {
           font-family: var(--font-sans);
           font-size: 12px;
-          color: #EFEAE0;
+          color: #171821;
           text-transform: uppercase;
         }
 

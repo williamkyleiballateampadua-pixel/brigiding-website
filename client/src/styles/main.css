@@ -13,8 +13,8 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark-primary);
-  color: var(--text-cream);
+  background-color: #FFFFFF;
+  color: var(--text-dark);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
@@ -41,7 +41,7 @@ body {
   }
 }
 
-/* Button Variants from Figma */
+/* Button Variants */
 .button-gold {
   display: inline-flex;
   align-items: center;
@@ -49,7 +49,7 @@ body {
   gap: 12px;
   padding: 16px 32px;
   background: var(--gold-primary);
-  color: #11162E;
+  color: #0A0D1A;
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 14px;
@@ -60,12 +60,13 @@ body {
   cursor: pointer;
   text-decoration: none;
   transition: var(--transition-normal);
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.25);
 }
 
 .button-gold:hover {
   background: var(--gold-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.4);
 }
 
 .button-navy {
@@ -74,7 +75,7 @@ body {
   justify-content: center;
   gap: 12px;
   padding: 16px 32px;
-  background: var(--bg-dark-primary);
+  background: #0A0D1A;
   color: var(--gold-primary);
   font-family: var(--font-sans);
   font-weight: 700;
@@ -90,6 +91,6 @@ body {
 
 .button-navy:hover {
   background: var(--gold-primary);
-  color: var(--bg-dark-primary);
+  color: #0A0D1A;
   transform: translateY(-2px);
 }

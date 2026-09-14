@@ -10,10 +10,10 @@ interface TicketsPageProps {
 
 export const TicketsPage: React.FC<TicketsPageProps> = ({ onNavigate }) => {
   return (
-    <div className="tickets-page-wrapper">
+    <div className="tickets-page-wrapper" style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <Navbar activeTab="TICKETS" onNavigate={onNavigate} />
       <ArtGalleryTickets />
-      <div style={{ background: '#0A0D1A', paddingBottom: '80px' }}>
+      <div style={{ background: '#FFFFFF', paddingBottom: '96px' }}>
         <JuliaContactBox />
       </div>
       <Footer />

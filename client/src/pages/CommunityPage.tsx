@@ -36,7 +36,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="community-page-wrapper" style={{ background: '#F5F0E8', minHeight: '100vh' }}>
+    <div className="community-page-wrapper" style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       <Navbar activeTab="COMMUNITY" onNavigate={onNavigate} />
 
       <section className="community-page-section">
@@ -159,7 +159,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
           font-family: var(--font-sans);
           font-size: 16px;
           line-height: 1.6;
-          color: #6F6C68;
+          color: #475569;
           max-width: 640px;
         }
 
@@ -167,14 +167,14 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
           width: 100%;
           max-width: 640px;
           background: #FFFFFF;
-          border: 1px solid rgba(0, 0, 0, 0.08);
+          border: 1px solid #E2E8F0;
           border-radius: 8px;
           padding: 32px;
           display: flex;
           flex-direction: column;
           gap: 20px;
           text-align: left;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.06);
           margin-top: 16px;
         }
 

@@ -94,7 +94,7 @@ export const ArtGalleryTickets: React.FC = () => {
       <style>{`
         .tickets-exhibition-section {
           width: 100%;
-          background: #0A0D1A;
+          background: #FFFFFF;
           padding: 96px 0 120px;
           display: flex;
           justify-content: center;
@@ -123,14 +123,14 @@ export const ArtGalleryTickets: React.FC = () => {
           font-weight: 400;
           font-size: 56px;
           line-height: 1.1;
-          color: #FFFFFF;
+          color: #171821;
           max-width: 800px;
         }
 
         .exhibition-subtext {
           font-family: var(--font-sans);
           font-size: 16px;
-          color: #EFEAE0;
+          color: #475569;
           max-width: 600px;
         }
 
@@ -156,11 +156,11 @@ export const ArtGalleryTickets: React.FC = () => {
         }
 
         .art-frame-border {
-          background: #11162E;
-          border: 4px solid #C9A84C;
+          background: #0A0D1A;
+          border: 3px solid #C9A84C;
           border-radius: 8px;
           padding: 12px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
           display: flex;
           flex-direction: column;
           gap: 16px;
@@ -169,7 +169,7 @@ export const ArtGalleryTickets: React.FC = () => {
 
         .art-frame-border:hover {
           transform: translateY(-8px);
-          box-shadow: 0 30px 60px rgba(201, 168, 76, 0.3);
+          box-shadow: 0 24px 48px rgba(201, 168, 76, 0.25);
         }
 
         .poster-img {
@@ -181,7 +181,7 @@ export const ArtGalleryTickets: React.FC = () => {
         }
 
         .gallery-plaque {
-          background: rgba(10, 13, 26, 0.9);
+          background: rgba(255, 255, 255, 0.06);
           border: 1px solid rgba(201, 168, 76, 0.3);
           padding: 16px;
           border-radius: 4px;

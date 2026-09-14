@@ -55,7 +55,7 @@ export const EventsSection: React.FC = () => {
                 <h3 className="event-card-title">{evt.title}</h3>
                 <p className="event-card-location">{evt.location}</p>
                 <div className="event-card-action">
-                  <a href="#community" className="button-navy">
+                  <a href="#community" className="button-navy" style={{ width: '100%', textAlign: 'center' }}>
                     GET TICKETS →
                   </a>
                 </div>
@@ -68,7 +68,7 @@ export const EventsSection: React.FC = () => {
       <style>{`
         .events-section {
           width: 100%;
-          background: #11162E;
+          background: #FFFFFF;
           padding: 96px 0;
           display: flex;
           justify-content: center;
@@ -97,7 +97,7 @@ export const EventsSection: React.FC = () => {
           font-weight: 400;
           font-size: 40px;
           line-height: 55px;
-          color: #FFFFFF;
+          color: #171821;
           text-transform: lowercase;
         }
 
@@ -109,18 +109,20 @@ export const EventsSection: React.FC = () => {
         }
 
         .event-card {
-          background: #0A0D1A;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: #FFFFFF;
+          border: 1px solid #E2E8F0;
           border-radius: 8px;
           overflow: hidden;
           display: flex;
           flex-direction: column;
-          transition: transform 0.3s ease, border-color 0.3s ease;
+          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+          transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .event-card:hover {
           transform: translateY(-4px);
           border-color: #C9A84C;
+          box-shadow: 0 12px 28px rgba(201, 168, 76, 0.15);
         }
 
         .event-card-img {
@@ -151,7 +153,7 @@ export const EventsSection: React.FC = () => {
           font-weight: 400;
           font-size: 24px;
           line-height: 33px;
-          color: #FFFFFF;
+          color: #171821;
         }
 
         .event-card-location {
@@ -159,7 +161,7 @@ export const EventsSection: React.FC = () => {
           font-weight: 400;
           font-size: 14px;
           line-height: 19px;
-          color: #EFEAE0;
+          color: #475569;
           flex-grow: 1;
         }
 

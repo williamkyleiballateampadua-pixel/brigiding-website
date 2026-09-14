@@ -1,9 +1,10 @@
 :root {
-  /* Color Palette - Figma Prototype & Client Directives */
+  /* Color Palette - Figma Prototype & Client Directives (Sept 10, 2026) */
+  --bg-site-canvas: #FFFFFF;
   --bg-dark-primary: #0A0D1A;
   --bg-dark-secondary: #11162E;
-  --bg-card: #0A0D1A;
-  --bg-cream: #F5F0E8;
+  --bg-card-light: #FFFFFF;
+  --bg-cream: #FFFFFF;
   
   /* Navigation Silk Blue Gradient (Client Reference) */
   --nav-bg-gradient: linear-gradient(135deg, #03081A 0%, #081B4B 50%, #040D28 100%);
@@ -18,16 +19,18 @@
   /* Neutral Colors */
   --text-white: #FFFFFF;
   --text-cream: #EFEAE0;
-  --text-silver: #A3AED0;
+  --text-silver: #D1D5DB;
   --text-dark: #171821;
-  --text-muted-dark: #6F6C68;
+  --text-body-dark: #475569;
+  --text-muted-dark: #64748B;
   
   /* Borders */
-  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-light: #E2E8F0;
+  --border-subtle: rgba(0, 0, 0, 0.08);
   --border-nav: rgba(201, 168, 76, 0.25);
   --border-gold: #C9A84C;
   
-  /* Typography */
+  /* Typography - Max 2 Fonts */
   --font-serif: 'DM Serif Text', serif;
   --font-sans: 'Manrope', sans-serif;
   

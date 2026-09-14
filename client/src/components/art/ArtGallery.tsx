@@ -59,7 +59,7 @@ export const ArtGallery: React.FC = () => {
       <style>{`
         .art-gallery-section {
           width: 100%;
-          background: #F5F0E8;
+          background: #FFFFFF;
           padding: 96px 0;
           display: flex;
           justify-content: center;
@@ -102,7 +102,7 @@ export const ArtGallery: React.FC = () => {
           font-weight: 400;
           font-size: 15px;
           line-height: 160%;
-          color: #6F6C68;
+          color: #475569;
           max-width: 480px;
         }
 
@@ -119,6 +119,8 @@ export const ArtGallery: React.FC = () => {
           border-radius: 8px;
           overflow: hidden;
           cursor: pointer;
+          border: 1px solid rgba(0, 0, 0, 0.08);
+          box-shadow: 0 4px 12px rgba(0,0,0,0.04);
         }
 
         .art-photo-img {

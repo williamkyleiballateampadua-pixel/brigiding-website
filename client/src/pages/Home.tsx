@@ -27,35 +27,35 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div className="homepage-wrapper">
+    <div className="homepage-wrapper" style={{ background: '#FFFFFF', minHeight: '100vh' }}>
       {/* 1. Navigation Bar (90px, Royal Blue Silk, 4 Links: HOME, TICKETS, ARTIST, COMMUNITY) */}
       <Navbar activeTab={activeTab} onNavigate={handleNavigate} />
 
-      {/* 2. Hero 5-Slide 5-Star Auto Carousel (720px, #0A0D1A) */}
+      {/* 2. Hero 5-Slide 5-Star Auto Carousel (720px, Full-width) */}
       <HeroCarousel />
 
       {/* 3. Marquee Ticker Ribbon (65px, #C9A84C Gold) */}
       <MarqueeTicker />
 
-      {/* 4. Featured Show Spotlight Banner (#11162E) */}
+      {/* 4. Featured Show Spotlight Banner */}
       <ShowHighlight />
 
-      {/* 5. ART Section Breaker & 12 Pictures 3x4 Grid (#F5F0E8 Cream) */}
+      {/* 5. ART Section Breaker & 12 Pictures 3x4 Grid */}
       <ArtGallery />
 
-      {/* 6. Upcoming Appearances "events" Section (#11162E) */}
+      {/* 6. Upcoming Appearances "events" Section */}
       <EventsSection />
 
-      {/* 7. Press Quote Section (#0A0D1A) */}
+      {/* 7. Press Quote Section */}
       <QuoteBanner />
 
-      {/* 8. Front-Row Call To Action Section (#F5F0E8 Cream) */}
+      {/* 8. Front-Row Call To Action Section */}
       <BookingCtaSection />
 
-      {/* 9. JOIN OUR COMMUNITY Form & Talent Manager Contact Section (#F5F0E8 Cream) */}
+      {/* 9. JOIN OUR COMMUNITY Form & Talent Manager Contact Section */}
       <CommunitySection />
 
-      {/* 10. Footer (280px, #11162E) */}
+      {/* 10. Footer (280px, #0A0D1A) */}
       <Footer />
     </div>
   );

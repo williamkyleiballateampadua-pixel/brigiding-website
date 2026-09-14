@@ -25,7 +25,7 @@ export const BookingCtaSection: React.FC = () => {
       <style>{`
         .booking-cta-section {
           width: 100%;
-          background: #F5F0E8;
+          background: #FFFFFF;
           padding: 96px 0;
           display: flex;
           justify-content: center;
@@ -56,7 +56,7 @@ export const BookingCtaSection: React.FC = () => {
           font-weight: 400;
           font-size: 16px;
           line-height: 160%;
-          color: #6F6C68;
+          color: #475569;
           max-width: 640px;
         }
 

@@ -3,7 +3,7 @@ import React from 'react';
 export const ShowHighlight: React.FC = () => {
   return (
     <section className="show-highlight-section">
-      <div className="show-highlight-inner">
+      <div className="show-highlight-card">
         {/* Left Event Poster */}
         <div className="banner-image-wrapper">
           <div
@@ -39,20 +39,25 @@ export const ShowHighlight: React.FC = () => {
       <style>{`
         .show-highlight-section {
           width: 100%;
-          background: #11162E;
+          background: #FFFFFF;
           padding: 64px 0;
           display: flex;
           justify-content: center;
         }
 
-        .show-highlight-inner {
+        .show-highlight-card {
           width: 100%;
           max-width: 1440px;
-          padding: 0 80px;
+          margin: 0 80px;
+          background: #0A0D1A;
+          border: 1px solid #C9A84C;
+          border-radius: 12px;
+          padding: 40px;
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: 40px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .banner-image-wrapper {
@@ -67,6 +72,7 @@ export const ShowHighlight: React.FC = () => {
           background-size: cover;
           background-position: center;
           border-radius: 8px;
+          border: 1px solid rgba(201, 168, 76, 0.3);
         }
 
         .banner-details {
@@ -107,18 +113,19 @@ export const ShowHighlight: React.FC = () => {
           font-size: 12px;
           line-height: 16px;
           text-transform: uppercase;
-          color: #FFFFFF;
+          color: #C9A84C;
           margin-top: 8px;
         }
 
         @media (max-width: 1024px) {
-          .show-highlight-inner {
+          .show-highlight-card {
             flex-direction: column;
-            padding: 0 32px;
+            margin: 0 32px;
+            padding: 24px;
           }
           .banner-image-wrapper {
             width: 100%;
-            height: 300px;
+            height: 260px;
           }
         }
       `}</style>

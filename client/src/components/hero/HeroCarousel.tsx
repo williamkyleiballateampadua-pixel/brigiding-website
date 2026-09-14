@@ -117,56 +117,51 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
               >
                 {/* Hero Left Content Column */}
                 <div className="hero-left">
-                  {/* Top Text Content Stack */}
-                  <div className="hero-left-top">
-                    <div className="section-overline">{slide.overline}</div>
+                  <div className="section-overline">{slide.overline}</div>
 
-                    <div className="hero-title-group">
-                      <h1 className="hero-title">{slide.title}</h1>
-                      <p className="hero-tagline">{slide.tagline}</p>
-                    </div>
-
-                    <p className="hero-description">{slide.description}</p>
-
-                    <div className="hero-cta">
-                      <button
-                        onClick={(e) => handleCtaClick(e, slide.targetTab)}
-                        className="button-gold"
-                      >
-                        {slide.ctaText}
-                      </button>
-                    </div>
+                  <div className="hero-title-group">
+                    <h1 className="hero-title">{slide.title}</h1>
+                    <p className="hero-tagline">{slide.tagline}</p>
                   </div>
 
-                  {/* Bottom Anchored Star Indicators */}
-                  <div className="hero-left-bottom">
-                    <div className="star-indicators">
-                      {slides.map((starSlide, starIndex) => {
-                        const isStarActive = starIndex === currentIndex;
-                        return (
-                          <button
-                            key={starSlide.id}
-                            className={`star-btn ${isStarActive ? 'active' : ''}`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setCurrentIndex(starIndex);
-                            }}
-                            title={`Go to slide ${starSlide.id}: ${starSlide.overline}`}
+                  <p className="hero-description">{slide.description}</p>
+
+                  <div className="hero-cta">
+                    <button
+                      onClick={(e) => handleCtaClick(e, slide.targetTab)}
+                      className="button-gold"
+                    >
+                      {slide.ctaText}
+                    </button>
+                  </div>
+
+                  {/* 5 Star Indicators placed directly beneath the CTA button */}
+                  <div className="star-indicators">
+                    {slides.map((starSlide, starIndex) => {
+                      const isStarActive = starIndex === currentIndex;
+                      return (
+                        <button
+                          key={starSlide.id}
+                          className={`star-btn ${isStarActive ? 'active' : ''}`}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setCurrentIndex(starIndex);
+                          }}
+                          title={`Go to slide ${starSlide.id}: ${starSlide.overline}`}
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill={isStarActive ? '#C9A84C' : 'none'}
+                            stroke={isStarActive ? '#C9A84C' : '#9CA3AF'}
+                            strokeWidth="2"
                           >
-                            <svg
-                              width="20"
-                              height="20"
-                              viewBox="0 0 24 24"
-                              fill={isStarActive ? '#C9A84C' : 'none'}
-                              stroke={isStarActive ? '#C9A84C' : '#9CA3AF'}
-                              strokeWidth="2"
-                            >
-                              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                            </svg>
-                          </button>
-                        );
-                      })}
-                    </div>
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                          </svg>
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
 
@@ -186,9 +181,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       <style>{`
         .hero-section {
           width: 100%;
-          height: calc(100vh - 90px);
-          min-height: 600px;
-          max-height: 850px;
+          height: 720px;
           background: #0A0D1A;
           display: flex;
           justify-content: center;
@@ -200,7 +193,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-inner {
           width: 100%;
           max-width: 1440px;
-          height: 100%;
+          height: 720px;
           position: relative;
         }
 
@@ -214,7 +207,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           inset: 0;
           width: 100%;
-          height: 100%;
+          height: 720px;
           display: flex;
           flex-direction: row;
           transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -223,25 +216,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         .hero-left {
           width: 50%;
-          height: 100%;
-          padding: clamp(36px, 4vw, 64px) clamp(24px, 5vw, 80px);
+          height: 720px;
+          padding: 0 clamp(24px, 5vw, 80px);
           display: flex;
           flex-direction: column;
-          justify-content: space-between;
+          justify-content: center;
           align-items: flex-start;
+          gap: clamp(16px, 2.2vw, 24px);
           z-index: 5;
-        }
-
-        .hero-left-top {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: clamp(16px, 2vw, 24px);
-        }
-
-        .hero-left-bottom {
-          margin-top: auto;
-          padding-top: 24px;
         }
 
         .hero-title-group {
@@ -276,7 +258,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .hero-cta {
-          margin-top: 8px;
+          margin-top: 4px;
         }
 
         .star-indicators {
@@ -284,6 +266,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           align-items: center;
           gap: 12px;
           height: 32px;
+          margin-top: 8px;
         }
 
         .star-btn {
@@ -311,11 +294,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-right {
           position: relative;
           width: 50%;
-          height: 100%;
+          height: 720px;
           overflow: hidden;
         }
 
-        /* Seamless Gradient Seam Blend into Dark Navy Left Column */
+        /* Loved Seamless Gradient Seam Blend into Dark Navy Left Column */
         .hero-right::before {
           content: '';
           position: absolute;
@@ -336,7 +319,6 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         @media (max-width: 1024px) {
           .hero-section, .hero-inner, .hero-slide {
             height: auto;
-            min-height: auto;
           }
           .hero-slide {
             position: relative;
@@ -346,12 +328,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             width: 100%;
             height: auto;
             padding: 48px 32px 32px 32px;
-            justify-content: flex-start;
             gap: 24px;
-          }
-          .hero-left-bottom {
-            margin-top: 0;
-            padding-top: 0;
           }
           .hero-right {
             width: 100%;

@@ -86,8 +86,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
       <style>{`
         .footer-container {
           width: 100%;
-          background: #0A0D1A;
-          border-top: 1px solid rgba(201, 168, 76, 0.2);
+          background: #07143D;
+          border-top: 1px solid rgba(201, 168, 76, 0.4);
           padding: 80px 0 40px;
           display: flex;
           justify-content: center;

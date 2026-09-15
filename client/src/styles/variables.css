@@ -1,20 +1,22 @@
 :root {
-  /* Color Palette - Figma Prototype & Client Directives (Sept 10, 2026) */
+  /* Color Palette - Royal Blue Silk & Metallic Gold (Client Directives Reconciled) */
   --bg-site-canvas: #FFFFFF;
-  --bg-dark-primary: #0A0D1A;
-  --bg-dark-secondary: #11162E;
+  --bg-dark-primary: #061545;
+  --bg-dark-secondary: #07143D;
   --bg-card-light: #FFFFFF;
   --bg-cream: #FFFFFF;
   
-  /* Navigation Silk Blue Gradient (Client Reference) */
-  --nav-bg-gradient: linear-gradient(135deg, #03081A 0%, #081B4B 50%, #040D28 100%);
-  --nav-silk-glow: radial-gradient(circle at 50% 0%, rgba(13, 37, 102, 0.4) 0%, rgba(3, 8, 26, 0.95) 100%);
+  /* Navigation & Hero Royal Blue Silk Gradient */
+  --nav-bg-gradient: linear-gradient(135deg, #071648 0%, #0F3294 50%, #0B226D 100%);
+  --nav-silk-glow: radial-gradient(circle at 50% 0%, rgba(15, 50, 148, 0.5) 0%, rgba(7, 22, 72, 0.98) 100%);
+  --hero-bg-gradient: linear-gradient(135deg, #061545 0%, #0E2F88 45%, #081B57 100%);
   
-  /* Gold Accents & Typography */
+  /* Luminous Metallic Gold Accents */
   --gold-primary: #C9A84C;
+  --gold-vibrant: #FFD700;
   --gold-hover: #D4AF37;
   --gold-light: #F5E6B3;
-  --gold-gradient: linear-gradient(135deg, #C9A84C 0%, #E5C058 100%);
+  --gold-gradient: linear-gradient(135deg, #FFD700 0%, #C9A84C 50%, #E5C058 100%);
   
   /* Neutral Colors */
   --text-white: #FFFFFF;
@@ -27,7 +29,7 @@
   /* Borders */
   --border-light: #E2E8F0;
   --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-nav: rgba(201, 168, 76, 0.25);
+  --border-nav: rgba(201, 168, 76, 0.4);
   --border-gold: #C9A84C;
   
   /* Typography - Max 2 Fonts */
@@ -44,3 +46,4 @@
   --transition-fast: all 0.2s ease;
   --transition-normal: all 0.3s ease;
 }
+

@@ -106,9 +106,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab = 'HOME', onNavigate }
           z-index: 1000;
           width: 100%;
           height: 90px;
-          background: linear-gradient(135deg, #03081A 0%, #081B4B 50%, #040D28 100%);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-          border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+          background: linear-gradient(135deg, #071648 0%, #0F3294 50%, #0B226D 100%);
+          box-shadow: 0 4px 25px rgba(7, 22, 72, 0.5);
+          border-bottom: 1px solid rgba(201, 168, 76, 0.4);
           display: flex;
           align-items: center;
           justify-content: center;

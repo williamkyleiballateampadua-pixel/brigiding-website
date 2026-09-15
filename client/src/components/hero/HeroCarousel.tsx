@@ -182,7 +182,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-section {
           width: 100%;
           height: 720px;
-          background: #0A0D1A;
+          background: linear-gradient(135deg, #061545 0%, #0E2F88 45%, #081B57 100%);
           display: flex;
           justify-content: center;
           align-items: center;
@@ -245,7 +245,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           font-weight: 400;
           font-size: clamp(20px, 2.2vw, 32px);
           line-height: 120%;
-          color: #C9A84C;
+          color: #FFD700;
         }
 
         .hero-description {
@@ -288,7 +288,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .star-btn.active svg {
-          filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.7));
+          filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
         }
 
         .hero-right {
@@ -298,14 +298,14 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           overflow: hidden;
         }
 
-        /* Loved Seamless Gradient Seam Blend into Dark Navy Left Column */
+        /* Loved Seamless Gradient Seam Blend into Royal Blue Left Column */
         .hero-right::before {
           content: '';
           position: absolute;
           inset: 0;
           z-index: 3;
           pointer-events: none;
-          background: linear-gradient(to right, #0A0D1A 0%, rgba(10, 13, 26, 0.5) 25%, transparent 60%);
+          background: linear-gradient(to right, #061545 0%, rgba(14, 47, 136, 0.55) 25%, transparent 60%);
         }
 
         .hero-photograph {
@@ -335,7 +335,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             height: 420px;
           }
           .hero-right::before {
-            background: linear-gradient(to bottom, #0A0D1A 0%, rgba(10, 13, 26, 0.5) 25%, transparent 60%);
+            background: linear-gradient(to bottom, #061545 0%, rgba(14, 47, 136, 0.55) 25%, transparent 60%);
           }
         }
 

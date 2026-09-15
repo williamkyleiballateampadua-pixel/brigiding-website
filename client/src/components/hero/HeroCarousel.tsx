@@ -110,17 +110,15 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }
   };
 
-  const currentSlide = slides[currentIndex];
-
   return (
     <section className="hero-section">
-      {/* Dynamic React Bits Ambient Mesh Spotlight Layer */}
+      {/* Dynamic React Bits Ambient Mesh Spotlight Layer (Unified Royal Blue Silk & Gold Theme) */}
       <div
         className="ambient-spotlight-layer"
         style={{
           background: `
-            radial-gradient(circle at 75% 45%, ${currentSlide.glowColor} 0%, transparent 60%),
-            radial-gradient(circle at 25% 65%, ${currentSlide.secondaryGlow} 0%, transparent 55%),
+            radial-gradient(ellipse at 75% 45%, rgba(15, 50, 148, 0.55) 0%, rgba(7, 22, 72, 0.3) 50%, transparent 75%),
+            radial-gradient(ellipse at 25% 65%, rgba(201, 168, 76, 0.28) 0%, transparent 60%),
             radial-gradient(circle at 50% 0%, rgba(15, 50, 148, 0.4) 0%, transparent 70%),
             #050814
           `,
@@ -376,15 +374,24 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           overflow: hidden;
         }
 
-        /* Organic Stage Lighting Radial Blend (No Muddy Lines) */
+        /* Seamless Royal Blue Photo Blend Overlay into Left Column */
+        .hero-right::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          pointer-events: none;
+          background: linear-gradient(to right, #050814 0%, rgba(5, 8, 20, 0.65) 20%, rgba(7, 22, 72, 0.3) 40%, transparent 70%);
+        }
+
         .hero-photograph {
           width: 100%;
           height: 100%;
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
-          mask-image: radial-gradient(ellipse at 65% 50%, black 60%, transparent 98%);
-          -webkit-mask-image: radial-gradient(ellipse at 65% 50%, black 60%, transparent 98%);
+          mask-image: radial-gradient(ellipse at 65% 50%, black 70%, transparent 100%);
+          -webkit-mask-image: radial-gradient(ellipse at 65% 50%, black 70%, transparent 100%);
         }
 
         @media (max-width: 1024px) {
@@ -405,9 +412,12 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             width: 100%;
             height: 420px;
           }
+          .hero-right::before {
+            background: linear-gradient(to bottom, #050814 0%, rgba(5, 8, 20, 0.65) 20%, rgba(7, 22, 72, 0.3) 40%, transparent 70%);
+          }
           .hero-photograph {
-            mask-image: radial-gradient(ellipse at 50% 50%, black 70%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 70%, transparent 100%);
+            mask-image: radial-gradient(ellipse at 50% 50%, black 75%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 75%, transparent 100%);
           }
         }
 

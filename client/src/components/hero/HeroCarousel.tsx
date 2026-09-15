@@ -9,6 +9,8 @@ interface SlideData {
   ctaText: string;
   targetTab: string;
   imageUrl: string;
+  glowColor: string;
+  secondaryGlow: string;
 }
 
 interface HeroCarouselProps {
@@ -26,6 +28,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       ctaText: 'GET IN TOUCH →',
       targetTab: 'COMMUNITY',
       imageUrl: '/Pictures/1%20-%20Promo%20Look.jpg',
+      glowColor: 'rgba(201, 168, 76, 0.28)',
+      secondaryGlow: 'rgba(15, 50, 148, 0.45)',
     },
     {
       id: 2,
@@ -36,6 +40,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       ctaText: 'EXPLORE SHOWS →',
       targetTab: 'TICKETS',
       imageUrl: '/Pictures/BRIGIDING-252-web.jpg',
+      glowColor: 'rgba(255, 215, 0, 0.32)',
+      secondaryGlow: 'rgba(180, 83, 9, 0.25)',
     },
     {
       id: 3,
@@ -46,6 +52,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       ctaText: 'MEET THE HOUSE →',
       targetTab: 'ARTIST',
       imageUrl: '/Pictures/5%20-%20Terno%20Look.jpg',
+      glowColor: 'rgba(245, 158, 11, 0.3)',
+      secondaryGlow: 'rgba(124, 45, 18, 0.35)',
     },
     {
       id: 4,
@@ -56,6 +64,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       ctaText: 'VIEW PRODUCTIONS →',
       targetTab: 'TICKETS',
       imageUrl: '/Pictures/14%20-%20Ruveal.jpg',
+      glowColor: 'rgba(147, 51, 234, 0.3)',
+      secondaryGlow: 'rgba(201, 168, 76, 0.28)',
     },
     {
       id: 5,
@@ -66,6 +76,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
       ctaText: 'LISTEN NOW →',
       targetTab: 'COMMUNITY',
       imageUrl: '/Pictures/11%20-%20Pearl%20Look.jpg',
+      glowColor: 'rgba(236, 72, 153, 0.32)',
+      secondaryGlow: 'rgba(6, 182, 212, 0.3)',
     },
   ];
 
@@ -98,8 +110,32 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }
   };
 
+  const currentSlide = slides[currentIndex];
+
   return (
     <section className="hero-section">
+      {/* Dynamic React Bits Ambient Mesh Spotlight Layer */}
+      <div
+        className="ambient-spotlight-layer"
+        style={{
+          background: `
+            radial-gradient(circle at 75% 45%, ${currentSlide.glowColor} 0%, transparent 60%),
+            radial-gradient(circle at 25% 65%, ${currentSlide.secondaryGlow} 0%, transparent 55%),
+            radial-gradient(circle at 50% 0%, rgba(15, 50, 148, 0.4) 0%, transparent 70%),
+            #050814
+          `,
+        }}
+      />
+
+      {/* React Bits Floating Gold Sparkle Particles */}
+      <div className="sparkle-particles-layer">
+        <span className="sparkle p1">✦</span>
+        <span className="sparkle p2">✧</span>
+        <span className="sparkle p3">✦</span>
+        <span className="sparkle p4">✧</span>
+        <span className="sparkle p5">✦</span>
+      </div>
+
       <div className="hero-inner">
         {/* Stacked Slides Container for 60fps GPU Cross-Fade */}
         <div className="slides-container">
@@ -153,8 +189,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                             width="20"
                             height="20"
                             viewBox="0 0 24 24"
-                            fill={isStarActive ? '#C9A84C' : 'none'}
-                            stroke={isStarActive ? '#C9A84C' : '#9CA3AF'}
+                            fill={isStarActive ? '#FFD700' : 'none'}
+                            stroke={isStarActive ? '#FFD700' : '#9CA3AF'}
                             strokeWidth="2"
                           >
                             <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -182,7 +218,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-section {
           width: 100%;
           height: 720px;
-          background: linear-gradient(135deg, #061545 0%, #0E2F88 45%, #081B57 100%);
+          background: #050814;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -190,11 +226,49 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: relative;
         }
 
+        .ambient-spotlight-layer {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          pointer-events: none;
+          transition: background 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: background;
+        }
+
+        .sparkle-particles-layer {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          pointer-events: none;
+          overflow: hidden;
+        }
+
+        .sparkle {
+          position: absolute;
+          color: rgba(255, 215, 0, 0.6);
+          font-size: 14px;
+          animation: floatSparkle 6s ease-in-out infinite alternate;
+          filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        }
+
+        .sparkle.p1 { top: 15%; left: 10%; animation-delay: 0s; font-size: 18px; }
+        .sparkle.p2 { top: 75%; left: 35%; animation-delay: 1.5s; font-size: 14px; }
+        .sparkle.p3 { top: 25%; left: 45%; animation-delay: 3s; font-size: 20px; }
+        .sparkle.p4 { top: 85%; left: 15%; animation-delay: 4.5s; font-size: 12px; }
+        .sparkle.p5 { top: 50%; left: 48%; animation-delay: 2s; font-size: 16px; }
+
+        @keyframes floatSparkle {
+          0% { transform: translateY(0px) scale(0.8) rotate(0deg); opacity: 0.3; }
+          50% { transform: translateY(-15px) scale(1.2) rotate(15deg); opacity: 0.9; }
+          100% { transform: translateY(-30px) scale(0.9) rotate(30deg); opacity: 0.4; }
+        }
+
         .hero-inner {
           width: 100%;
           max-width: 1440px;
           height: 720px;
           position: relative;
+          z-index: 3;
         }
 
         .slides-container {
@@ -238,6 +312,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           font-size: clamp(44px, 5.5vw, 80px);
           line-height: 95%;
           color: #FFFFFF;
+          text-shadow: 0 4px 25px rgba(0, 0, 0, 0.9), 0 0 40px rgba(255, 215, 0, 0.25);
+          letter-spacing: -0.01em;
         }
 
         .hero-tagline {
@@ -246,6 +322,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           font-size: clamp(20px, 2.2vw, 32px);
           line-height: 120%;
           color: #FFD700;
+          text-shadow: 0 2px 15px rgba(255, 215, 0, 0.4);
         }
 
         .hero-description {
@@ -255,6 +332,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           line-height: 160%;
           color: #EFEAE0;
           max-width: 540px;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
         .hero-cta {
@@ -284,11 +362,11 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .star-btn:hover {
-          transform: scale(1.2);
+          transform: scale(1.25);
         }
 
         .star-btn.active svg {
-          filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8));
+          filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.9));
         }
 
         .hero-right {
@@ -298,22 +376,15 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           overflow: hidden;
         }
 
-        /* Loved Seamless Gradient Seam Blend into Royal Blue Left Column */
-        .hero-right::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          z-index: 3;
-          pointer-events: none;
-          background: linear-gradient(to right, #061545 0%, rgba(14, 47, 136, 0.55) 25%, transparent 60%);
-        }
-
+        /* Organic Stage Lighting Radial Blend (No Muddy Lines) */
         .hero-photograph {
           width: 100%;
           height: 100%;
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
+          mask-image: radial-gradient(ellipse at 65% 50%, black 60%, transparent 98%);
+          -webkit-mask-image: radial-gradient(ellipse at 65% 50%, black 60%, transparent 98%);
         }
 
         @media (max-width: 1024px) {
@@ -334,8 +405,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             width: 100%;
             height: 420px;
           }
-          .hero-right::before {
-            background: linear-gradient(to bottom, #061545 0%, rgba(14, 47, 136, 0.55) 25%, transparent 60%);
+          .hero-photograph {
+            mask-image: radial-gradient(ellipse at 50% 50%, black 70%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 70%, transparent 100%);
           }
         }
 
@@ -357,6 +429,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 };
 
 export default HeroCarousel;
+
 
 
 

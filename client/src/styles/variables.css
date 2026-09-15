@@ -1,15 +1,15 @@
 :root {
   /* Color Palette - Royal Blue Silk & Metallic Gold (Client Directives Reconciled) */
   --bg-site-canvas: #FFFFFF;
-  --bg-dark-primary: #061545;
-  --bg-dark-secondary: #07143D;
+  --bg-dark-primary: #050814;
+  --bg-dark-secondary: #0A0E24;
   --bg-card-light: #FFFFFF;
   --bg-cream: #FFFFFF;
   
   /* Navigation & Hero Royal Blue Silk Gradient */
   --nav-bg-gradient: linear-gradient(135deg, #071648 0%, #0F3294 50%, #0B226D 100%);
   --nav-silk-glow: radial-gradient(circle at 50% 0%, rgba(15, 50, 148, 0.5) 0%, rgba(7, 22, 72, 0.98) 100%);
-  --hero-bg-gradient: linear-gradient(135deg, #061545 0%, #0E2F88 45%, #081B57 100%);
+  --hero-bg-gradient: radial-gradient(circle at 65% 40%, #0A1B54 0%, #050814 80%);
   
   /* Luminous Metallic Gold Accents */
   --gold-primary: #C9A84C;

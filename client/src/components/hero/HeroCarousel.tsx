@@ -110,18 +110,16 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }
   };
 
-  const currentSlide = slides[currentIndex];
-
   return (
     <section className="hero-section">
-      {/* Dynamic React Bits Ambient Mesh Spotlight Layer - Matches Active Slide Studio Lighting */}
+      {/* Royal Blue Silk & Regal Gold Ambient Spotlight Backdrop (Fixed Brand Palette) */}
       <div
         className="ambient-spotlight-layer"
         style={{
           background: `
-            radial-gradient(ellipse at 70% 48%, ${currentSlide.glowColor} 0%, transparent 65%),
-            radial-gradient(ellipse at 25% 60%, ${currentSlide.secondaryGlow} 0%, transparent 70%),
-            radial-gradient(circle at 80% 20%, ${currentSlide.glowColor} 0%, transparent 50%),
+            radial-gradient(ellipse at 65% 48%, rgba(201, 168, 76, 0.25) 0%, transparent 65%),
+            radial-gradient(ellipse at 25% 60%, rgba(15, 50, 148, 0.55) 0%, transparent 70%),
+            radial-gradient(circle at 80% 30%, rgba(11, 34, 109, 0.65) 0%, transparent 60%),
             #050814
           `,
         }}

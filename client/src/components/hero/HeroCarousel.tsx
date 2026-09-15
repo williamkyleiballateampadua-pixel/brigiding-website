@@ -265,7 +265,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
 
         .hero-inner {
           width: 100%;
-          max-width: 1440px;
+          max-width: 100%;
           height: 720px;
           position: relative;
           z-index: 3;
@@ -291,7 +291,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .hero-left {
           width: 50%;
           height: 720px;
-          padding: 0 clamp(24px, 5vw, 80px);
+          padding: 0 clamp(40px, 7vw, 160px);
           display: flex;
           flex-direction: column;
           justify-content: center;

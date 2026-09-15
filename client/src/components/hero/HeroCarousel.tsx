@@ -291,9 +291,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .hero-left {
-          width: 50%;
+          width: 54%;
           height: 720px;
-          padding: 0 clamp(40px, 7vw, 160px);
+          padding: 0 clamp(32px, 5vw, 120px);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -375,7 +375,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           top: 0;
           right: 0;
-          width: 60%;
+          width: 52%;
           height: 720px;
           overflow: hidden;
           z-index: 2;
@@ -385,21 +385,21 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .photo-blend-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 60% 50%, transparent 40%, rgba(5, 8, 20, 0.4) 75%, #050814 100%);
+          background: radial-gradient(circle at 65% 50%, transparent 40%, rgba(5, 8, 20, 0.4) 75%, #050814 100%);
           z-index: 3;
           pointer-events: none;
           mix-blend-mode: multiply;
         }
 
-        /* Multi-Stage Stepless Radial Mask Feathering (100% Seamless Canvas Integration) */
+        /* Multi-Stage Stepless Radial Mask Feathering (Unobstructed Left Container) */
         .hero-photograph {
           width: 100%;
           height: 100%;
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
-          mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 85%, transparent 98%);
-          -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 85%, transparent 98%);
+          mask-image: radial-gradient(circle at 65% 50%, rgba(0,0,0,1) 28%, rgba(0,0,0,0.8) 48%, rgba(0,0,0,0.3) 70%, transparent 95%);
+          -webkit-mask-image: radial-gradient(circle at 65% 50%, rgba(0,0,0,1) 28%, rgba(0,0,0,0.8) 48%, rgba(0,0,0,0.3) 70%, transparent 95%);
         }
 
         @media (max-width: 1024px) {

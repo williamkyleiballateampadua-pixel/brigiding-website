@@ -110,15 +110,18 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
     }
   };
 
+  const currentSlide = slides[currentIndex];
+
   return (
     <section className="hero-section">
-      {/* Dynamic React Bits Ambient Mesh Spotlight Layer */}
+      {/* Dynamic React Bits Ambient Mesh Spotlight Layer - Matches Active Slide Studio Lighting */}
       <div
         className="ambient-spotlight-layer"
         style={{
           background: `
-            radial-gradient(ellipse at 65% 50%, rgba(201, 168, 76, 0.22) 0%, rgba(15, 50, 148, 0.3) 50%, transparent 75%),
-            radial-gradient(circle at 20% 40%, rgba(15, 50, 148, 0.45) 0%, transparent 70%),
+            radial-gradient(ellipse at 70% 48%, ${currentSlide.glowColor} 0%, transparent 65%),
+            radial-gradient(ellipse at 25% 60%, ${currentSlide.secondaryGlow} 0%, transparent 70%),
+            radial-gradient(circle at 80% 20%, ${currentSlide.glowColor} 0%, transparent 50%),
             #050814
           `,
         }}
@@ -198,8 +201,10 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
                   </div>
                 </div>
 
-                {/* Hero Right Photograph Column (Overlapping Edge-to-Edge) */}
+                {/* Hero Right Photograph Column (Expanded 68% Container with Multi-Stage Mask) */}
                 <div className="hero-right">
+                  {/* Canvas Blend Gradient Overlay */}
+                  <div className="photo-blend-overlay" />
                   <div
                     className="hero-photograph"
                     style={{ backgroundImage: `url("${slide.imageUrl}")` }}
@@ -286,9 +291,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .hero-left {
-          width: 50%;
+          width: 46%;
           height: 720px;
-          padding: 0 clamp(40px, 7vw, 160px);
+          padding: 0 clamp(40px, 6vw, 140px);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -370,21 +375,31 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           top: 0;
           right: 0;
-          width: 60%;
+          width: 68%;
           height: 720px;
           overflow: hidden;
           z-index: 2;
         }
 
-        /* 360-Degree Radial Mask Feathering (100% Seamless Integration, No Middle Seam) */
+        /* Subtle Soft Light Vignette Overlay */
+        .photo-blend-overlay {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 68% 48%, transparent 40%, rgba(5, 8, 20, 0.4) 75%, #050814 100%);
+          z-index: 3;
+          pointer-events: none;
+          mix-blend-mode: multiply;
+        }
+
+        /* Multi-Stage Stepless Radial Mask Feathering (100% Seamless Canvas Integration) */
         .hero-photograph {
           width: 100%;
           height: 100%;
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
-          mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0) 95%);
-          -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 35%, rgba(0,0,0,0.5) 65%, rgba(0,0,0,0) 95%);
+          mask-image: radial-gradient(circle at 68% 48%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.4) 66%, rgba(0,0,0,0.1) 84%, transparent 98%);
+          -webkit-mask-image: radial-gradient(circle at 68% 48%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.4) 66%, rgba(0,0,0,0.1) 84%, transparent 98%);
         }
 
         @media (max-width: 1024px) {
@@ -407,8 +422,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
             height: 420px;
           }
           .hero-photograph {
-            mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0.5) 70%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 85%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 30%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.1) 85%, transparent 100%);
           }
         }
 

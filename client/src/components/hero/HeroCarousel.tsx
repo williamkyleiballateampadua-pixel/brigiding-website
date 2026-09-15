@@ -291,9 +291,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         }
 
         .hero-left {
-          width: 46%;
+          width: 50%;
           height: 720px;
-          padding: 0 clamp(40px, 6vw, 140px);
+          padding: 0 clamp(40px, 7vw, 160px);
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -375,7 +375,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           position: absolute;
           top: 0;
           right: 0;
-          width: 68%;
+          width: 60%;
           height: 720px;
           overflow: hidden;
           z-index: 2;
@@ -385,7 +385,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
         .photo-blend-overlay {
           position: absolute;
           inset: 0;
-          background: radial-gradient(circle at 68% 48%, transparent 40%, rgba(5, 8, 20, 0.4) 75%, #050814 100%);
+          background: radial-gradient(circle at 60% 50%, transparent 40%, rgba(5, 8, 20, 0.4) 75%, #050814 100%);
           z-index: 3;
           pointer-events: none;
           mix-blend-mode: multiply;
@@ -398,8 +398,8 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onNavigate }) => {
           background-size: cover;
           background-position: center 20%;
           image-rendering: -webkit-optimize-contrast;
-          mask-image: radial-gradient(circle at 68% 48%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.4) 66%, rgba(0,0,0,0.1) 84%, transparent 98%);
-          -webkit-mask-image: radial-gradient(circle at 68% 48%, rgba(0,0,0,1) 22%, rgba(0,0,0,0.85) 42%, rgba(0,0,0,0.4) 66%, rgba(0,0,0,0.1) 84%, transparent 98%);
+          mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 85%, transparent 98%);
+          -webkit-mask-image: radial-gradient(circle at 60% 50%, rgba(0,0,0,1) 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 85%, transparent 98%);
         }
 
         @media (max-width: 1024px) {
